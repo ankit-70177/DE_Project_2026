@@ -22,12 +22,12 @@
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
-| Group Lead | | | |
-| Member 2 | | | |
-| Member 3 | | | |
-| Member 4 | | | |
+| Group Lead |Ankit Kumar |2501010061 |ankit-70177 |
+| Member 2 |Surya Prakash |2501010464 |suryaprakashsingh1705-sys |
+| Member 3 |Charan |2501010554 |charan29tej |
+| Member 4 |Prince Dubey |2501010352 |thisisprincedubey  |
 
-**Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
+**Team No.:** T0088 · **Section:** C · **Repository URL:** https://github.com/ankit-70177/DE_Project_2026.git
 
 ---
 

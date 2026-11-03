@@ -1,0 +1,25 @@
+{
+  "team_number": "T0088",
+  "group_lead": {
+    "name": "Ankit Kumar",
+    "enrollment_no": "2501010061",
+    "github": "ankit-70177"
+  },
+  "members": [
+    {
+      "name": "Surya Prakash",
+      "enrollment_no": "2501010464",
+      "github": "suryaprakashsingh1705-sys"
+    },
+    {
+      "name": "Charan",
+      "enrollment_no": "2501010554",
+      "github": "charan29tej"
+    },
+    {
+      "name": "Prince Dubey",
+      "enrollment_no": "2501010352",
+      "github": "thisisprincedubey"
+    }
+  ]
+}
