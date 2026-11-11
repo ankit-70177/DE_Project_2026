@@ -1,0 +1,111 @@
+
+erDiagram
+    ARTISTS {
+        int artist_id PK
+        text artist_name
+        varchar country_code
+        text primary_genre
+        boolean is_verified
+        int monthly_listeners
+        timestamptz created_at
+    }
+
+    USERS {
+        int user_id PK
+        text email UK
+        text display_name
+        varchar country_code
+        date birth_date
+        text subscription
+        timestamptz created_at
+    }
+
+    ALBUMS {
+        int album_id PK
+        int artist_id FK
+        text album_title
+        text album_type
+        date release_date
+        text label
+        text upc UK
+    }
+
+    TRACKS {
+        int track_id PK
+        int album_id FK
+        int disc_no
+        int track_no
+        text title
+        int duration_ms
+        boolean explicit
+        text isrc UK
+        int popularity
+    }
+
+    TRACK_ARTISTS {
+        int track_id PK, FK
+        int artist_id PK, FK
+        text role
+    }
+
+    PLAYLISTS {
+        int playlist_id PK
+        int owner_user_id FK
+        text name
+        boolean is_public
+        boolean is_collaborative
+        timestamptz created_at
+    }
+
+    PLAYLIST_TRACKS {
+        int playlist_id PK, FK
+        int position PK
+        int track_id FK
+        int added_by_user_id FK
+        timestamptz added_at
+    }
+
+    STREAMS {
+        int stream_id PK
+        int user_id FK
+        int track_id FK
+        timestamptz started_at
+        int ms_played
+        text platform
+        text source_type
+        int playlist_id FK
+        boolean skipped
+        boolean offline
+    }
+
+    LIKED_TRACKS {
+        int user_id PK, FK
+        int track_id PK, FK
+        timestamptz liked_at
+    }
+
+    ARTIST_FOLLOWS {
+        int user_id PK, FK
+        int artist_id PK, FK
+        timestamptz followed_at
+    }
+
+    ARTISTS ||--o{ ALBUMS : releases
+    ALBUMS ||--o{ TRACKS : contains
+    TRACKS ||--o{ TRACK_ARTISTS : credited_to
+    ARTISTS ||--o{ TRACK_ARTISTS : performs
+
+    USERS ||--o{ PLAYLISTS : owns
+    PLAYLISTS ||--o{ PLAYLIST_TRACKS : contains
+    TRACKS ||--o{ PLAYLIST_TRACKS : appears_in
+    USERS ||--o{ PLAYLIST_TRACKS : adds
+
+    USERS ||--o{ STREAMS : generates
+    TRACKS ||--o{ STREAMS : played_in
+    PLAYLISTS o|--o{ STREAMS : source_for
+
+    USERS ||--o{ LIKED_TRACKS : likes
+    TRACKS ||--o{ LIKED_TRACKS : receives
+
+    USERS ||--o{ ARTIST_FOLLOWS : follows
+    ARTISTS ||--o{ ARTIST_FOLLOWS : followed_by
