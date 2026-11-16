@@ -1,0 +1,39 @@
+=== R23 run 1 ===
+Limit  (cost=33117.96..33118.02 rows=25 width=24) (actual time=86.409..86.412 rows=25.00 loops=1)
+  Buffers: shared hit=2579, temp read=1045 written=1172
+  ->  Sort  (cost=32617.96..33242.96 rows=250000 width=24) (actual time=69.179..79.636 rows=200025.00 loops=1)
+        Sort Key: started_at DESC
+        Sort Method: external merge  Disk: 9336kB
+        Buffers: shared hit=2579, temp read=1045 written=1172
+        ->  Seq Scan on streams  (cost=0.00..5076.00 rows=250000 width=24) (actual time=0.015..23.314 rows=250000.00 loops=1)
+              Buffers: shared hit=2576
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.287 ms
+Execution Time: 86.913 ms
+=== R23 run 2 ===
+Limit  (cost=33117.96..33118.02 rows=25 width=24) (actual time=90.330..90.333 rows=25.00 loops=1)
+  Buffers: shared hit=2579, temp read=1045 written=1172
+  ->  Sort  (cost=32617.96..33242.96 rows=250000 width=24) (actual time=72.496..83.606 rows=200025.00 loops=1)
+        Sort Key: started_at DESC
+        Sort Method: external merge  Disk: 9336kB
+        Buffers: shared hit=2579, temp read=1045 written=1172
+        ->  Seq Scan on streams  (cost=0.00..5076.00 rows=250000 width=24) (actual time=0.016..24.248 rows=250000.00 loops=1)
+              Buffers: shared hit=2576
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.318 ms
+Execution Time: 90.876 ms
+=== R23 run 3 ===
+Limit  (cost=33117.96..33118.02 rows=25 width=24) (actual time=90.418..90.422 rows=25.00 loops=1)
+  Buffers: shared hit=2579, temp read=1045 written=1172
+  ->  Sort  (cost=32617.96..33242.96 rows=250000 width=24) (actual time=72.473..83.710 rows=200025.00 loops=1)
+        Sort Key: started_at DESC
+        Sort Method: external merge  Disk: 9336kB
+        Buffers: shared hit=2579, temp read=1045 written=1172
+        ->  Seq Scan on streams  (cost=0.00..5076.00 rows=250000 width=24) (actual time=0.025..24.266 rows=250000.00 loops=1)
+              Buffers: shared hit=2576
+Planning:
+  Buffers: shared hit=88
+Planning Time: 0.593 ms
+Execution Time: 91.395 ms

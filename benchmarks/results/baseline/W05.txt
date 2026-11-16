@@ -1,0 +1,72 @@
+=== W05 run 1 ===
+Delete on playlist_tracks  (cost=1588.00..3868.07 rows=0 width=0) (actual time=9.210..9.211 rows=0.00 loops=1)
+  Buffers: shared hit=1504 dirtied=2
+  InitPlan 1
+    ->  Index Scan using tracks_pkey on tracks tracks_1  (cost=0.29..8.31 rows=1 width=4) (actual time=0.004..0.005 rows=1.00 loops=1)
+          Index Cond: (track_id = 1389)
+          Index Searches: 1
+          Buffers: shared hit=3
+  ->  Hash Join  (cost=1579.69..3859.76 rows=12 width=12) (actual time=4.845..9.152 rows=2.00 loops=1)
+        Hash Cond: (playlist_tracks.track_id = tracks.track_id)
+        Buffers: shared hit=1500
+        ->  Seq Scan on playlist_tracks  (cost=0.00..1965.04 rows=120004 width=10) (actual time=0.005..4.466 rows=120004.00 loops=1)
+              Buffers: shared hit=765
+        ->  Hash  (cost=1579.60..1579.60 rows=7 width=10) (actual time=1.832..1.832 rows=1.00 loops=1)
+              Buckets: 1024  Batches: 1  Memory Usage: 9kB
+              Buffers: shared hit=735
+              ->  Seq Scan on tracks  (cost=0.00..1579.60 rows=7 width=10) (actual time=0.047..1.830 rows=1.00 loops=1)
+                    Filter: (album_id = (InitPlan 1).col1)
+                    Rows Removed by Filter: 67807
+                    Buffers: shared hit=735
+Planning:
+  Buffers: shared hit=220
+Planning Time: 0.384 ms
+Execution Time: 9.268 ms
+=== W05 run 2 ===
+Delete on playlist_tracks  (cost=1588.00..3868.07 rows=0 width=0) (actual time=9.259..9.260 rows=0.00 loops=1)
+  Buffers: shared hit=1502
+  InitPlan 1
+    ->  Index Scan using tracks_pkey on tracks tracks_1  (cost=0.29..8.31 rows=1 width=4) (actual time=0.005..0.005 rows=1.00 loops=1)
+          Index Cond: (track_id = 1389)
+          Index Searches: 1
+          Buffers: shared hit=3
+  ->  Hash Join  (cost=1579.69..3859.76 rows=12 width=12) (actual time=4.918..9.249 rows=2.00 loops=1)
+        Hash Cond: (playlist_tracks.track_id = tracks.track_id)
+        Buffers: shared hit=1500
+        ->  Seq Scan on playlist_tracks  (cost=0.00..1965.04 rows=120004 width=10) (actual time=0.005..4.520 rows=120004.00 loops=1)
+              Buffers: shared hit=765
+        ->  Hash  (cost=1579.60..1579.60 rows=7 width=10) (actual time=1.840..1.840 rows=1.00 loops=1)
+              Buckets: 1024  Batches: 1  Memory Usage: 9kB
+              Buffers: shared hit=735
+              ->  Seq Scan on tracks  (cost=0.00..1579.60 rows=7 width=10) (actual time=0.046..1.838 rows=1.00 loops=1)
+                    Filter: (album_id = (InitPlan 1).col1)
+                    Rows Removed by Filter: 67807
+                    Buffers: shared hit=735
+Planning:
+  Buffers: shared hit=220
+Planning Time: 0.375 ms
+Execution Time: 9.322 ms
+=== W05 run 3 ===
+Delete on playlist_tracks  (cost=1588.00..3868.07 rows=0 width=0) (actual time=9.158..9.159 rows=0.00 loops=1)
+  Buffers: shared hit=1502
+  InitPlan 1
+    ->  Index Scan using tracks_pkey on tracks tracks_1  (cost=0.29..8.31 rows=1 width=4) (actual time=0.004..0.005 rows=1.00 loops=1)
+          Index Cond: (track_id = 1389)
+          Index Searches: 1
+          Buffers: shared hit=3
+  ->  Hash Join  (cost=1579.69..3859.76 rows=12 width=12) (actual time=4.870..9.148 rows=2.00 loops=1)
+        Hash Cond: (playlist_tracks.track_id = tracks.track_id)
+        Buffers: shared hit=1500
+        ->  Seq Scan on playlist_tracks  (cost=0.00..1965.04 rows=120004 width=10) (actual time=0.005..4.467 rows=120004.00 loops=1)
+              Buffers: shared hit=765
+        ->  Hash  (cost=1579.60..1579.60 rows=7 width=10) (actual time=1.829..1.829 rows=1.00 loops=1)
+              Buckets: 1024  Batches: 1  Memory Usage: 9kB
+              Buffers: shared hit=735
+              ->  Seq Scan on tracks  (cost=0.00..1579.60 rows=7 width=10) (actual time=0.042..1.826 rows=1.00 loops=1)
+                    Filter: (album_id = (InitPlan 1).col1)
+                    Rows Removed by Filter: 67807
+                    Buffers: shared hit=735
+Planning:
+  Buffers: shared hit=220
+Planning Time: 0.392 ms
+Execution Time: 9.223 ms
