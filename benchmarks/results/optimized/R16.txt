@@ -1,0 +1,87 @@
+=== R16 run 1 ===
+Sort  (cost=4580.89..4588.31 rows=2965 width=12) (actual time=23.733..23.860 rows=2675.00 loops=1)
+  Sort Key: (count(DISTINCT s.user_id)) DESC
+  Sort Method: quicksort  Memory: 180kB
+  Buffers: shared hit=707
+  ->  GroupAggregate  (cost=4261.31..4409.91 rows=2965 width=12) (actual time=22.676..23.600 rows=2675.00 loops=1)
+        Group Key: ta.artist_id
+        Buffers: shared hit=704
+        ->  Sort  (cost=4261.31..4300.96 rows=15859 width=8) (actual time=22.662..22.937 rows=14619.00 loops=1)
+              Sort Key: ta.artist_id, s.user_id
+              Sort Method: quicksort  Memory: 727kB
+              Buffers: shared hit=704
+              ->  Hash Join  (cost=2223.92..3154.91 rows=15859 width=8) (actual time=6.376..20.159 rows=14619.00 loops=1)
+                    Hash Cond: (s.track_id = ta.track_id)
+                    Buffers: shared hit=701
+                    ->  Index Only Scan using idx_streams_started_at_cover on streams s  (cost=0.42..723.69 rows=13101 width=8) (actual time=0.007..7.653 rows=12820.00 loops=1)
+                          Index Cond: (started_at >= '2026-06-03 00:00:00+05:30'::timestamp with time zone)
+                          Heap Fetches: 12820
+                          Index Searches: 1
+                          Buffers: shared hit=221
+                    ->  Hash  (cost=1254.89..1254.89 rows=77489 width=8) (actual time=6.304..6.305 rows=77489.00 loops=1)
+                          Buckets: 131072  Batches: 1  Memory Usage: 4051kB
+                          Buffers: shared hit=480
+                          ->  Seq Scan on track_artists ta  (cost=0.00..1254.89 rows=77489 width=8) (actual time=0.004..2.907 rows=77489.00 loops=1)
+                                Buffers: shared hit=480
+Planning:
+  Buffers: shared hit=284
+Planning Time: 0.435 ms
+Execution Time: 24.661 ms
+=== R16 run 2 ===
+Sort  (cost=4580.89..4588.31 rows=2965 width=12) (actual time=12.058..12.107 rows=2675.00 loops=1)
+  Sort Key: (count(DISTINCT s.user_id)) DESC
+  Sort Method: quicksort  Memory: 180kB
+  Buffers: shared hit=708
+  ->  GroupAggregate  (cost=4261.31..4409.91 rows=2965 width=12) (actual time=11.044..11.891 rows=2675.00 loops=1)
+        Group Key: ta.artist_id
+        Buffers: shared hit=705
+        ->  Sort  (cost=4261.31..4300.96 rows=15859 width=8) (actual time=11.031..11.286 rows=14619.00 loops=1)
+              Sort Key: ta.artist_id, s.user_id
+              Sort Method: quicksort  Memory: 727kB
+              Buffers: shared hit=705
+              ->  Hash Join  (cost=2223.92..3154.91 rows=15859 width=8) (actual time=6.335..9.495 rows=14619.00 loops=1)
+                    Hash Cond: (s.track_id = ta.track_id)
+                    Buffers: shared hit=702
+                    ->  Index Only Scan using idx_streams_started_at_cover on streams s  (cost=0.42..723.69 rows=13101 width=8) (actual time=0.011..1.147 rows=12820.00 loops=1)
+                          Index Cond: (started_at >= '2026-06-03 00:00:00+05:30'::timestamp with time zone)
+                          Heap Fetches: 12820
+                          Index Searches: 1
+                          Buffers: shared hit=222
+                    ->  Hash  (cost=1254.89..1254.89 rows=77489 width=8) (actual time=6.241..6.241 rows=77489.00 loops=1)
+                          Buckets: 131072  Batches: 1  Memory Usage: 4051kB
+                          Buffers: shared hit=480
+                          ->  Seq Scan on track_artists ta  (cost=0.00..1254.89 rows=77489 width=8) (actual time=0.008..2.867 rows=77489.00 loops=1)
+                                Buffers: shared hit=480
+Planning:
+  Buffers: shared hit=285
+Planning Time: 0.923 ms
+Execution Time: 12.276 ms
+=== R16 run 3 ===
+Sort  (cost=4580.89..4588.31 rows=2965 width=12) (actual time=12.032..12.076 rows=2675.00 loops=1)
+  Sort Key: (count(DISTINCT s.user_id)) DESC
+  Sort Method: quicksort  Memory: 180kB
+  Buffers: shared hit=708
+  ->  GroupAggregate  (cost=4261.31..4409.91 rows=2965 width=12) (actual time=11.051..11.903 rows=2675.00 loops=1)
+        Group Key: ta.artist_id
+        Buffers: shared hit=705
+        ->  Sort  (cost=4261.31..4300.96 rows=15859 width=8) (actual time=11.038..11.290 rows=14619.00 loops=1)
+              Sort Key: ta.artist_id, s.user_id
+              Sort Method: quicksort  Memory: 727kB
+              Buffers: shared hit=705
+              ->  Hash Join  (cost=2223.92..3154.91 rows=15859 width=8) (actual time=6.159..9.494 rows=14619.00 loops=1)
+                    Hash Cond: (s.track_id = ta.track_id)
+                    Buffers: shared hit=702
+                    ->  Index Only Scan using idx_streams_started_at_cover on streams s  (cost=0.42..723.69 rows=13101 width=8) (actual time=0.009..1.138 rows=12820.00 loops=1)
+                          Index Cond: (started_at >= '2026-06-03 00:00:00+05:30'::timestamp with time zone)
+                          Heap Fetches: 12820
+                          Index Searches: 1
+                          Buffers: shared hit=222
+                    ->  Hash  (cost=1254.89..1254.89 rows=77489 width=8) (actual time=6.091..6.091 rows=77489.00 loops=1)
+                          Buckets: 131072  Batches: 1  Memory Usage: 4051kB
+                          Buffers: shared hit=480
+                          ->  Seq Scan on track_artists ta  (cost=0.00..1254.89 rows=77489 width=8) (actual time=0.004..2.839 rows=77489.00 loops=1)
+                                Buffers: shared hit=480
+Planning:
+  Buffers: shared hit=285
+Planning Time: 0.671 ms
+Execution Time: 12.164 ms

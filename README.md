@@ -13,12 +13,15 @@
 | `queries/workload_30.sql` | The 30 queries for Phase 3 (do not edit) |
 | `benchmarks/run_benchmark.sh` | Timing script: 3 runs per query, average, raw plans saved |
 | `CHECKPOINTS.md` | Checkpoint dates and the files each one needs (DE and AP repos) |
+| `sql/05_indexes.sql`, `sql/06_optimized_queries.sql` | CP3 indexes and optimized 30-query workload |
+| `docs/04_optimization_report.md` | Before/after analysis, correctness checks, plans and index storage |
+| `benchmarks/results/optimized/summary.csv` | Three-run CP3 averages and scan nodes |
 
 **Getting started:** **clone this repository and push it into your team's DE repo** (the DE repo you submitted in the form); the steps are in [`CHECKPOINTS.md`](CHECKPOINTS.md). Keep the structure shown in [Repository structure](#repository-structure-submit-exactly-this). Unzip `seed_data.zip` inside your project folder, but don't commit the CSV files. Deadlines are in [`CHECKPOINTS.md`](CHECKPOINTS.md). Then begin with Phase 1.
 
 ---
 
-## Team details (fill in before you start)
+## Team details
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
@@ -43,6 +46,12 @@
 | | **Total** | | | **40** |
 
 ---
+
+## Current checkpoint status
+
+**CP3 · Optimization · verified 19 Nov 2026.** The repository contains the index definitions, optimized workload, three-run summary and optimization report. On the recorded PostgreSQL 18.6 run, the sum of the 30 query averages decreased from **19,337.930 ms** to **352.960 ms**. See [the optimization report](docs/04_optimization_report.md) for per-query results, plans, index sizes, and the R13 NULL correction.
+
+To load the bundled seed data, run commands from the repository root. The loader uses relative seed_data/ paths; keep the extracted CSV directory local and do not commit it.
 
 ## Phase 1: Problem statements
 
@@ -365,7 +374,8 @@ spotify-dbms-<team-no>/
 │   ├── 04_optimization_report.md
 │   └── 05_scalability_report.md
 ├── diagrams/
-│   └── er_diagram.png
+│   ├── er_diagram.svg                 # current rendered ER diagram
+│   └── er_diagram.mmd                 # Mermaid source
 ├── sql/
 │   ├── 01_schema.sql
 │   ├── 02_load_data.sql

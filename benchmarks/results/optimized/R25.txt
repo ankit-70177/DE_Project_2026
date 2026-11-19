@@ -1,0 +1,132 @@
+=== R25 run 1 ===
+Limit  (cost=3816.02..3816.15 rows=50 width=48) (actual time=1.406..1.409 rows=50.00 loops=1)
+  Buffers: shared hit=1782 read=79
+  CTE recent_tracks
+    ->  Nested Loop  (cost=0.42..1620.79 rows=503 width=23) (actual time=0.030..0.809 rows=460.00 loops=1)
+          Buffers: shared hit=395 read=78
+          ->  Seq Scan on albums a  (cost=0.00..283.00 rows=89 width=8) (actual time=0.011..0.439 rows=84.00 loops=1)
+                Filter: (release_date >= '2026-05-31'::date)
+                Rows Removed by Filter: 11916
+                Buffers: shared hit=133
+          ->  Index Scan using idx_tracks_album_disc_track on tracks t  (cost=0.42..14.96 rows=7 width=23) (actual time=0.004..0.004 rows=5.48 loops=84)
+                Index Cond: (album_id = a.album_id)
+                Index Searches: 84
+                Buffers: shared hit=262 read=78
+  ->  Sort  (cost=2195.23..2196.49 rows=503 width=48) (actual time=1.405..1.407 rows=50.00 loops=1)
+        Sort Key: (COALESCE((count(*)), '0'::bigint)) DESC, rt.release_date DESC
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=1782 read=79
+        ->  Hash Right Join  (cost=2111.81..2178.52 rows=503 width=48) (actual time=1.300..1.354 rows=460.00 loops=1)
+              Hash Cond: (s.track_id = rt.track_id)
+              Buffers: shared hit=1776 read=79
+              ->  HashAggregate  (cost=2095.47..2121.44 rows=2597 width=12) (actual time=0.418..0.438 rows=360.00 loops=1)
+                    Group Key: s.track_id
+                    Batches: 1  Memory Usage: 105kB
+                    Buffers: shared hit=1381 read=1
+                    ->  Nested Loop  (cost=0.42..2082.48 rows=2597 width=4) (actual time=0.008..0.366 rows=812.00 loops=1)
+                          Buffers: shared hit=1381 read=1
+                          ->  CTE Scan on recent_tracks rt_1  (cost=0.00..10.06 rows=503 width=4) (actual time=0.000..0.010 rows=460.00 loops=1)
+                                Storage: Memory  Maximum Storage: 40kB
+                          ->  Index Only Scan using idx_streams_track_started_at on streams s  (cost=0.42..4.07 rows=5 width=4) (actual time=0.001..0.001 rows=1.77 loops=460)
+                                Index Cond: (track_id = rt_1.track_id)
+                                Heap Fetches: 0
+                                Index Searches: 460
+                                Buffers: shared hit=1381 read=1
+              ->  Hash  (cost=10.06..10.06 rows=503 width=40) (actual time=0.879..0.879 rows=460.00 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 34kB
+                    Buffers: shared hit=395 read=78
+                    ->  CTE Scan on recent_tracks rt  (cost=0.00..10.06 rows=503 width=40) (actual time=0.031..0.856 rows=460.00 loops=1)
+                          Storage: Memory  Maximum Storage: 40kB
+                          Buffers: shared hit=395 read=78
+Planning:
+  Buffers: shared hit=430
+Planning Time: 0.888 ms
+Execution Time: 1.483 ms
+=== R25 run 2 ===
+Limit  (cost=3816.02..3816.15 rows=50 width=48) (actual time=1.183..1.186 rows=50.00 loops=1)
+  Buffers: shared hit=1861
+  CTE recent_tracks
+    ->  Nested Loop  (cost=0.42..1620.79 rows=503 width=23) (actual time=0.014..0.617 rows=460.00 loops=1)
+          Buffers: shared hit=473
+          ->  Seq Scan on albums a  (cost=0.00..283.00 rows=89 width=8) (actual time=0.008..0.382 rows=84.00 loops=1)
+                Filter: (release_date >= '2026-05-31'::date)
+                Rows Removed by Filter: 11916
+                Buffers: shared hit=133
+          ->  Index Scan using idx_tracks_album_disc_track on tracks t  (cost=0.42..14.96 rows=7 width=23) (actual time=0.002..0.002 rows=5.48 loops=84)
+                Index Cond: (album_id = a.album_id)
+                Index Searches: 84
+                Buffers: shared hit=340
+  ->  Sort  (cost=2195.23..2196.49 rows=503 width=48) (actual time=1.182..1.183 rows=50.00 loops=1)
+        Sort Key: (COALESCE((count(*)), '0'::bigint)) DESC, rt.release_date DESC
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=1861
+        ->  Hash Right Join  (cost=2111.81..2178.52 rows=503 width=48) (actual time=1.082..1.135 rows=460.00 loops=1)
+              Hash Cond: (s.track_id = rt.track_id)
+              Buffers: shared hit=1855
+              ->  HashAggregate  (cost=2095.47..2121.44 rows=2597 width=12) (actual time=0.399..0.419 rows=360.00 loops=1)
+                    Group Key: s.track_id
+                    Batches: 1  Memory Usage: 105kB
+                    Buffers: shared hit=1382
+                    ->  Nested Loop  (cost=0.42..2082.48 rows=2597 width=4) (actual time=0.007..0.351 rows=812.00 loops=1)
+                          Buffers: shared hit=1382
+                          ->  CTE Scan on recent_tracks rt_1  (cost=0.00..10.06 rows=503 width=4) (actual time=0.000..0.010 rows=460.00 loops=1)
+                                Storage: Memory  Maximum Storage: 40kB
+                          ->  Index Only Scan using idx_streams_track_started_at on streams s  (cost=0.42..4.07 rows=5 width=4) (actual time=0.001..0.001 rows=1.77 loops=460)
+                                Index Cond: (track_id = rt_1.track_id)
+                                Heap Fetches: 0
+                                Index Searches: 460
+                                Buffers: shared hit=1382
+              ->  Hash  (cost=10.06..10.06 rows=503 width=40) (actual time=0.680..0.680 rows=460.00 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 34kB
+                    Buffers: shared hit=473
+                    ->  CTE Scan on recent_tracks rt  (cost=0.00..10.06 rows=503 width=40) (actual time=0.015..0.661 rows=460.00 loops=1)
+                          Storage: Memory  Maximum Storage: 40kB
+                          Buffers: shared hit=473
+Planning:
+  Buffers: shared hit=430
+Planning Time: 0.688 ms
+Execution Time: 1.233 ms
+=== R25 run 3 ===
+Limit  (cost=3816.02..3816.15 rows=50 width=48) (actual time=1.265..1.268 rows=50.00 loops=1)
+  Buffers: shared hit=1861
+  CTE recent_tracks
+    ->  Nested Loop  (cost=0.42..1620.79 rows=503 width=23) (actual time=0.015..0.630 rows=460.00 loops=1)
+          Buffers: shared hit=473
+          ->  Seq Scan on albums a  (cost=0.00..283.00 rows=89 width=8) (actual time=0.009..0.392 rows=84.00 loops=1)
+                Filter: (release_date >= '2026-05-31'::date)
+                Rows Removed by Filter: 11916
+                Buffers: shared hit=133
+          ->  Index Scan using idx_tracks_album_disc_track on tracks t  (cost=0.42..14.96 rows=7 width=23) (actual time=0.002..0.003 rows=5.48 loops=84)
+                Index Cond: (album_id = a.album_id)
+                Index Searches: 84
+                Buffers: shared hit=340
+  ->  Sort  (cost=2195.23..2196.49 rows=503 width=48) (actual time=1.265..1.266 rows=50.00 loops=1)
+        Sort Key: (COALESCE((count(*)), '0'::bigint)) DESC, rt.release_date DESC
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=1861
+        ->  Hash Right Join  (cost=2111.81..2178.52 rows=503 width=48) (actual time=1.159..1.214 rows=460.00 loops=1)
+              Hash Cond: (s.track_id = rt.track_id)
+              Buffers: shared hit=1855
+              ->  HashAggregate  (cost=2095.47..2121.44 rows=2597 width=12) (actual time=0.463..0.484 rows=360.00 loops=1)
+                    Group Key: s.track_id
+                    Batches: 1  Memory Usage: 105kB
+                    Buffers: shared hit=1382
+                    ->  Nested Loop  (cost=0.42..2082.48 rows=2597 width=4) (actual time=0.007..0.403 rows=812.00 loops=1)
+                          Buffers: shared hit=1382
+                          ->  CTE Scan on recent_tracks rt_1  (cost=0.00..10.06 rows=503 width=4) (actual time=0.000..0.011 rows=460.00 loops=1)
+                                Storage: Memory  Maximum Storage: 40kB
+                          ->  Index Only Scan using idx_streams_track_started_at on streams s  (cost=0.42..4.07 rows=5 width=4) (actual time=0.001..0.001 rows=1.77 loops=460)
+                                Index Cond: (track_id = rt_1.track_id)
+                                Heap Fetches: 0
+                                Index Searches: 460
+                                Buffers: shared hit=1382
+              ->  Hash  (cost=10.06..10.06 rows=503 width=40) (actual time=0.693..0.693 rows=460.00 loops=1)
+                    Buckets: 1024  Batches: 1  Memory Usage: 34kB
+                    Buffers: shared hit=473
+                    ->  CTE Scan on recent_tracks rt  (cost=0.00..10.06 rows=503 width=40) (actual time=0.016..0.675 rows=460.00 loops=1)
+                          Storage: Memory  Maximum Storage: 40kB
+                          Buffers: shared hit=473
+Planning:
+  Buffers: shared hit=430
+Planning Time: 0.712 ms
+Execution Time: 1.320 ms
