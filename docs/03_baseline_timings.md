@@ -46,38 +46,38 @@ The benchmark results and raw execution plans are stored in:
 
 Execution times are reported in milliseconds (ms).
 
-| Query | Operation | Average Time (ms) |
-|---|---|---:|
-| R01 | Artist page – most-streamed tracks | 16.264 |
-| R02 | Album page – tracklist | 3.286 |
-| R03 | Track search – title contains love | 44.716 |
-| R04 | Recently played streams | 10.367 |
-| R05 | Playlist page – tracks and artists | 0.393 |
-| R06 | Liked tracks | 0.078 |
-| R07 | Royalty-eligible streams per artist | 23.055 |
-| R08 | Artist track skip rate | 20.578 |
-| R09 | User's top artists by listening time | 11.318 |
-| R10 | Daily streams per platform | 20.670 |
-| R11 | Release Radar | 0.976 |
-| R12 | Explicit tracks streamed by minors | 29.495 |
-| R13 | Public playlists never played | 48.314 |
-| R14 | Collaborative playlist contributors | 16.883 |
-| R15 | Artists followed by shared fans | 4.053 |
-| R16 | Monthly listeners per artist | 35.520 |
-| R17 | Free users with 4+ streams | 21.522 |
-| R18 | Offline listening share per platform | 30.320 |
-| R19 | Verified artists report | 18421.592 |
-| R20 | Listening patterns by country and hour | 319.400 |
-| R21 | Recording lookup by ISRC | 0.065 |
-| R22 | Duplicate tracks in playlists | 56.576 |
-| R23 | Support console – deep pagination | 89.728 |
-| R24 | Average track length by album type | 23.558 |
-| R25 | Recently released tracks ranked by streams | 33.371 |
-| W01 | Insert a stream | 0.884 |
-| W02 | Add a liked track | 0.766 |
-| W03 | Add a track to a playlist | 0.690 |
-| W04 | Recalculate monthly listeners | 44.221 |
-| W05 | Remove album tracks from playlists | 9.271 |
+| Query | Operation | Run 1 (ms) | Run 2 (ms) | Run 3 (ms) | Average (ms) |
+|---|---|---:|---:|---:|---:|
+| R01 | Artist page – most-streamed tracks | 19.598 | 14.592 | 14.601 | 16.264 |
+| R02 | Album page – tracklist | 3.818 | 3.011 | 3.029 | 3.286 |
+| R03 | Track search – title contains love | 43.767 | 44.970 | 45.411 | 44.716 |
+| R04 | Recently played streams | 10.312 | 10.264 | 10.525 | 10.367 |
+| R05 | Playlist page – tracks and artists | 0.660 | 0.261 | 0.259 | 0.393 |
+| R06 | Liked tracks | 0.080 | 0.076 | 0.078 | 0.078 |
+| R07 | Royalty-eligible streams per artist | 23.162 | 22.818 | 23.185 | 23.055 |
+| R08 | Artist track skip rate | 21.260 | 20.204 | 20.271 | 20.578 |
+| R09 | User's top artists by listening time | 11.630 | 11.038 | 11.285 | 11.318 |
+| R10 | Daily streams per platform | 20.577 | 20.481 | 20.951 | 20.670 |
+| R11 | Release Radar | 1.106 | 0.910 | 0.912 | 0.976 |
+| R12 | Explicit tracks streamed by minors | 30.239 | 29.279 | 28.968 | 29.495 |
+| R13 | Public playlists never played | 47.499 | 47.526 | 49.918 | 48.314 |
+| R14 | Collaborative playlist contributors | 17.453 | 16.598 | 16.597 | 16.883 |
+| R15 | Artists followed by shared fans | 4.451 | 3.861 | 3.846 | 4.053 |
+| R16 | Monthly listeners per artist | 35.572 | 35.463 | 35.524 | 35.520 |
+| R17 | Free users with 4+ streams | 21.711 | 21.545 | 21.309 | 21.522 |
+| R18 | Offline listening share per platform | 30.063 | 29.569 | 31.327 | 30.320 |
+| R19 | Verified artists report | 18703.108 | 18317.563 | 18244.104 | 18421.592 |
+| R20 | Listening patterns by country and hour | 319.878 | 313.098 | 325.225 | 319.400 |
+| R21 | Recording lookup by ISRC | 0.071 | 0.063 | 0.062 | 0.065 |
+| R22 | Duplicate tracks in playlists | 55.530 | 57.576 | 56.621 | 56.576 |
+| R23 | Support console – deep pagination | 86.913 | 90.876 | 91.395 | 89.728 |
+| R24 | Average track length by album type | 23.682 | 23.497 | 23.494 | 23.558 |
+| R25 | Recently released tracks ranked by streams | 33.346 | 33.432 | 33.334 | 33.371 |
+| W01 | Insert a stream | 1.487 | 0.581 | 0.584 | 0.884 |
+| W02 | Add a liked track | 1.294 | 0.497 | 0.507 | 0.766 |
+| W03 | Add a track to a playlist | 1.105 | 0.495 | 0.470 | 0.690 |
+| W04 | Recalculate monthly listeners | 45.386 | 44.797 | 42.481 | 44.221 |
+| W05 | Remove album tracks from playlists | 9.268 | 9.322 | 9.223 | 9.271 |
 
 ## 5. Performance Observations
 
