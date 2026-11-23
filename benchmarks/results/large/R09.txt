@@ -1,0 +1,255 @@
+=== R09 run 1 ===
+Limit  (cost=82.47..82.48 rows=5 width=55) (actual time=1.578..1.579 rows=5 loops=1)
+  Buffers: shared hit=70 read=14
+  ->  Sort  (cost=82.47..82.50 rows=13 width=55) (actual time=1.577..1.578 rows=5 loops=1)
+        Sort Key: (round(((sum(s.ms_played))::numeric / 60000.0), 1)) DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=70 read=14
+        ->  GroupAggregate  (cost=81.89..82.25 rows=13 width=55) (actual time=1.567..1.570 rows=5 loops=1)
+              Group Key: ta.artist_id, ar.artist_name
+              Buffers: shared hit=67 read=14
+              ->  Sort  (cost=81.89..81.93 rows=13 width=27) (actual time=1.561..1.562 rows=5 loops=1)
+                    Sort Key: ta.artist_id, ar.artist_name
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=67 read=14
+                    ->  Nested Loop  (cost=1.15..81.65 rows=13 width=27) (actual time=0.399..1.550 rows=5 loops=1)
+                          Buffers: shared hit=61 read=14
+                          ->  Nested Loop  (cost=0.86..77.63 rows=13 width=8) (actual time=0.184..0.634 rows=5 loops=1)
+                                Buffers: shared hit=55 read=5
+                                ->  Append  (cost=0.42..53.40 rows=12 width=8) (actual time=0.033..0.089 rows=5 loops=1)
+                                      Buffers: shared hit=40
+                                      ->  Index Only Scan using streams_p2025_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_01 s_1  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_02 s_2  (cost=0.42..4.44 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_03 s_3  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_04 s_4  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_05 s_5  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.008 rows=2 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_06 s_6  (cost=0.42..4.45 rows=1 width=8) (actual time=0.008..0.008 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_07_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_07 s_7  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_08_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_08 s_8  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_09_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_09 s_9  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_10_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_10 s_10  (cost=0.42..4.45 rows=1 width=8) (actual time=0.010..0.010 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_11_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_11 s_11  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_12_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_12 s_12  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                ->  Memoize  (cost=0.44..8.46 rows=1 width=8) (actual time=0.108..0.108 rows=1 loops=5)
+                                      Cache Key: s.track_id
+                                      Cache Mode: logical
+                                      Hits: 0  Misses: 5  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                                      Buffers: shared hit=15 read=5
+                                      ->  Index Scan using track_artists_pkey on track_artists ta  (cost=0.43..8.45 rows=1 width=8) (actual time=0.107..0.107 rows=1 loops=5)
+                                            Index Cond: (track_id = s.track_id)
+                                            Filter: (role = 'PRIMARY'::text)
+                                            Rows Removed by Filter: 0
+                                            Buffers: shared hit=15 read=5
+                          ->  Index Scan using artists_pkey on artists ar  (cost=0.29..0.31 rows=1 width=23) (actual time=0.183..0.183 rows=1 loops=5)
+                                Index Cond: (artist_id = ta.artist_id)
+                                Buffers: shared hit=6 read=9
+Planning:
+  Buffers: shared hit=2241 read=62
+Planning Time: 8.350 ms
+Execution Time: 1.639 ms
+=== R09 run 2 ===
+Limit  (cost=82.47..82.48 rows=5 width=55) (actual time=0.176..0.178 rows=5 loops=1)
+  Buffers: shared hit=84
+  ->  Sort  (cost=82.47..82.50 rows=13 width=55) (actual time=0.176..0.177 rows=5 loops=1)
+        Sort Key: (round(((sum(s.ms_played))::numeric / 60000.0), 1)) DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=84
+        ->  GroupAggregate  (cost=81.89..82.25 rows=13 width=55) (actual time=0.166..0.169 rows=5 loops=1)
+              Group Key: ta.artist_id, ar.artist_name
+              Buffers: shared hit=81
+              ->  Sort  (cost=81.89..81.93 rows=13 width=27) (actual time=0.160..0.161 rows=5 loops=1)
+                    Sort Key: ta.artist_id, ar.artist_name
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=81
+                    ->  Nested Loop  (cost=1.15..81.65 rows=13 width=27) (actual time=0.059..0.150 rows=5 loops=1)
+                          Buffers: shared hit=75
+                          ->  Nested Loop  (cost=0.86..77.63 rows=13 width=8) (actual time=0.055..0.134 rows=5 loops=1)
+                                Buffers: shared hit=60
+                                ->  Append  (cost=0.42..53.40 rows=12 width=8) (actual time=0.042..0.093 rows=5 loops=1)
+                                      Buffers: shared hit=40
+                                      ->  Index Only Scan using streams_p2025_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_01 s_1  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_02 s_2  (cost=0.42..4.44 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_03 s_3  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_04 s_4  (cost=0.42..4.45 rows=1 width=8) (actual time=0.014..0.014 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_05 s_5  (cost=0.42..4.45 rows=1 width=8) (actual time=0.008..0.008 rows=2 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_06 s_6  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_07_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_07 s_7  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_08_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_08 s_8  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_09_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_09 s_9  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_10_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_10 s_10  (cost=0.42..4.45 rows=1 width=8) (actual time=0.009..0.009 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_11_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_11 s_11  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_12_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_12 s_12  (cost=0.42..4.45 rows=1 width=8) (actual time=0.008..0.008 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                ->  Memoize  (cost=0.44..8.46 rows=1 width=8) (actual time=0.008..0.008 rows=1 loops=5)
+                                      Cache Key: s.track_id
+                                      Cache Mode: logical
+                                      Hits: 0  Misses: 5  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                                      Buffers: shared hit=20
+                                      ->  Index Scan using track_artists_pkey on track_artists ta  (cost=0.43..8.45 rows=1 width=8) (actual time=0.007..0.007 rows=1 loops=5)
+                                            Index Cond: (track_id = s.track_id)
+                                            Filter: (role = 'PRIMARY'::text)
+                                            Rows Removed by Filter: 0
+                                            Buffers: shared hit=20
+                          ->  Index Scan using artists_pkey on artists ar  (cost=0.29..0.31 rows=1 width=23) (actual time=0.003..0.003 rows=1 loops=5)
+                                Index Cond: (artist_id = ta.artist_id)
+                                Buffers: shared hit=15
+Planning:
+  Buffers: shared hit=2303
+Planning Time: 3.793 ms
+Execution Time: 0.232 ms
+=== R09 run 3 ===
+Limit  (cost=82.47..82.48 rows=5 width=55) (actual time=0.183..0.185 rows=5 loops=1)
+  Buffers: shared hit=84
+  ->  Sort  (cost=82.47..82.50 rows=13 width=55) (actual time=0.183..0.184 rows=5 loops=1)
+        Sort Key: (round(((sum(s.ms_played))::numeric / 60000.0), 1)) DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=84
+        ->  GroupAggregate  (cost=81.89..82.25 rows=13 width=55) (actual time=0.173..0.176 rows=5 loops=1)
+              Group Key: ta.artist_id, ar.artist_name
+              Buffers: shared hit=81
+              ->  Sort  (cost=81.89..81.93 rows=13 width=27) (actual time=0.167..0.169 rows=5 loops=1)
+                    Sort Key: ta.artist_id, ar.artist_name
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=81
+                    ->  Nested Loop  (cost=1.15..81.65 rows=13 width=27) (actual time=0.053..0.157 rows=5 loops=1)
+                          Buffers: shared hit=75
+                          ->  Nested Loop  (cost=0.86..77.63 rows=13 width=8) (actual time=0.049..0.140 rows=5 loops=1)
+                                Buffers: shared hit=60
+                                ->  Append  (cost=0.42..53.40 rows=12 width=8) (actual time=0.035..0.098 rows=5 loops=1)
+                                      Buffers: shared hit=40
+                                      ->  Index Only Scan using streams_p2025_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_01 s_1  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_02 s_2  (cost=0.42..4.44 rows=1 width=8) (actual time=0.008..0.008 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_03 s_3  (cost=0.42..4.45 rows=1 width=8) (actual time=0.006..0.006 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_04 s_4  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_05 s_5  (cost=0.42..4.45 rows=1 width=8) (actual time=0.008..0.008 rows=2 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_06 s_6  (cost=0.42..4.45 rows=1 width=8) (actual time=0.008..0.008 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_07_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_07 s_7  (cost=0.42..4.45 rows=1 width=8) (actual time=0.008..0.008 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_08_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_08 s_8  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_09_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_09 s_9  (cost=0.42..4.45 rows=1 width=8) (actual time=0.014..0.014 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_10_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_10 s_10  (cost=0.42..4.45 rows=1 width=8) (actual time=0.009..0.010 rows=1 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=4
+                                      ->  Index Only Scan using streams_p2025_11_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_11 s_11  (cost=0.42..4.45 rows=1 width=8) (actual time=0.007..0.007 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                      ->  Index Only Scan using streams_p2025_12_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_12 s_12  (cost=0.42..4.45 rows=1 width=8) (actual time=0.008..0.008 rows=0 loops=1)
+                                            Index Cond: ((user_id = 1038) AND (started_at >= '2025-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Heap Fetches: 0
+                                            Buffers: shared hit=3
+                                ->  Memoize  (cost=0.44..8.46 rows=1 width=8) (actual time=0.008..0.008 rows=1 loops=5)
+                                      Cache Key: s.track_id
+                                      Cache Mode: logical
+                                      Hits: 0  Misses: 5  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                                      Buffers: shared hit=20
+                                      ->  Index Scan using track_artists_pkey on track_artists ta  (cost=0.43..8.45 rows=1 width=8) (actual time=0.007..0.007 rows=1 loops=5)
+                                            Index Cond: (track_id = s.track_id)
+                                            Filter: (role = 'PRIMARY'::text)
+                                            Rows Removed by Filter: 0
+                                            Buffers: shared hit=20
+                          ->  Index Scan using artists_pkey on artists ar  (cost=0.29..0.31 rows=1 width=23) (actual time=0.003..0.003 rows=1 loops=5)
+                                Index Cond: (artist_id = ta.artist_id)
+                                Buffers: shared hit=15
+Planning:
+  Buffers: shared hit=2303
+Planning Time: 3.908 ms
+Execution Time: 0.241 ms

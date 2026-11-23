@@ -1,0 +1,87 @@
+=== R14 run 1 ===
+Limit  (cost=46428.55..46428.67 rows=50 width=36) (actual time=72.345..72.349 rows=50 loops=1)
+  Buffers: shared hit=59618 read=3274
+  ->  Sort  (cost=46428.55..46480.60 rows=20820 width=36) (actual time=72.345..72.347 rows=50 loops=1)
+        Sort Key: (count(DISTINCT pt.added_by_user_id)) DESC, (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=59618 read=3274
+        ->  GroupAggregate  (cost=1.06..45736.92 rows=20820 width=36) (actual time=0.237..70.962 rows=20123 loops=1)
+              Group Key: p.playlist_id
+              Buffers: shared hit=59615 read=3274
+              ->  Incremental Sort  (cost=1.06..43654.91 rows=249841 width=24) (actual time=0.231..60.223 rows=241187 loops=1)
+                    Sort Key: p.playlist_id, pt.added_by_user_id
+                    Presorted Key: p.playlist_id
+                    Full-sort Groups: 6273  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+                    Buffers: shared hit=59615 read=3274
+                    ->  Nested Loop  (cost=0.85..34973.23 rows=249841 width=24) (actual time=0.213..43.099 rows=241187 loops=1)
+                          Buffers: shared hit=59612 read=3274
+                          ->  Index Scan using playlists_pkey on playlists p  (cost=0.42..6879.43 rows=20820 width=20) (actual time=0.005..11.614 rows=20123 loops=1)
+                                Filter: is_collaborative
+                                Rows Removed by Filter: 179877
+                                Buffers: shared hit=1672 read=545
+                          ->  Index Only Scan using idx_playlist_tracks_playlist_adder on playlist_tracks pt  (cost=0.43..1.21 rows=14 width=8) (actual time=0.001..0.001 rows=12 loops=20123)
+                                Index Cond: (playlist_id = p.playlist_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=57940 read=2729
+Planning:
+  Buffers: shared hit=181 read=16
+Planning Time: 1.412 ms
+Execution Time: 72.376 ms
+=== R14 run 2 ===
+Limit  (cost=46428.55..46428.67 rows=50 width=36) (actual time=64.273..64.276 rows=50 loops=1)
+  Buffers: shared hit=62892
+  ->  Sort  (cost=46428.55..46480.60 rows=20820 width=36) (actual time=64.272..64.274 rows=50 loops=1)
+        Sort Key: (count(DISTINCT pt.added_by_user_id)) DESC, (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=62892
+        ->  GroupAggregate  (cost=1.06..45736.92 rows=20820 width=36) (actual time=0.031..62.991 rows=20123 loops=1)
+              Group Key: p.playlist_id
+              Buffers: shared hit=62889
+              ->  Incremental Sort  (cost=1.06..43654.91 rows=249841 width=24) (actual time=0.026..52.731 rows=241187 loops=1)
+                    Sort Key: p.playlist_id, pt.added_by_user_id
+                    Presorted Key: p.playlist_id
+                    Full-sort Groups: 6273  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+                    Buffers: shared hit=62889
+                    ->  Nested Loop  (cost=0.85..34973.23 rows=249841 width=24) (actual time=0.011..35.973 rows=241187 loops=1)
+                          Buffers: shared hit=62886
+                          ->  Index Scan using playlists_pkey on playlists p  (cost=0.42..6879.43 rows=20820 width=20) (actual time=0.004..9.948 rows=20123 loops=1)
+                                Filter: is_collaborative
+                                Rows Removed by Filter: 179877
+                                Buffers: shared hit=2217
+                          ->  Index Only Scan using idx_playlist_tracks_playlist_adder on playlist_tracks pt  (cost=0.43..1.21 rows=14 width=8) (actual time=0.001..0.001 rows=12 loops=20123)
+                                Index Cond: (playlist_id = p.playlist_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=60669
+Planning:
+  Buffers: shared hit=197
+Planning Time: 0.445 ms
+Execution Time: 64.299 ms
+=== R14 run 3 ===
+Limit  (cost=46428.55..46428.67 rows=50 width=36) (actual time=64.866..64.868 rows=50 loops=1)
+  Buffers: shared hit=62892
+  ->  Sort  (cost=46428.55..46480.60 rows=20820 width=36) (actual time=64.865..64.866 rows=50 loops=1)
+        Sort Key: (count(DISTINCT pt.added_by_user_id)) DESC, (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 30kB
+        Buffers: shared hit=62892
+        ->  GroupAggregate  (cost=1.06..45736.92 rows=20820 width=36) (actual time=0.032..63.530 rows=20123 loops=1)
+              Group Key: p.playlist_id
+              Buffers: shared hit=62889
+              ->  Incremental Sort  (cost=1.06..43654.91 rows=249841 width=24) (actual time=0.027..53.133 rows=241187 loops=1)
+                    Sort Key: p.playlist_id, pt.added_by_user_id
+                    Presorted Key: p.playlist_id
+                    Full-sort Groups: 6273  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+                    Buffers: shared hit=62889
+                    ->  Nested Loop  (cost=0.85..34973.23 rows=249841 width=24) (actual time=0.012..36.427 rows=241187 loops=1)
+                          Buffers: shared hit=62886
+                          ->  Index Scan using playlists_pkey on playlists p  (cost=0.42..6879.43 rows=20820 width=20) (actual time=0.005..10.159 rows=20123 loops=1)
+                                Filter: is_collaborative
+                                Rows Removed by Filter: 179877
+                                Buffers: shared hit=2217
+                          ->  Index Only Scan using idx_playlist_tracks_playlist_adder on playlist_tracks pt  (cost=0.43..1.21 rows=14 width=8) (actual time=0.001..0.001 rows=12 loops=20123)
+                                Index Cond: (playlist_id = p.playlist_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=60669
+Planning:
+  Buffers: shared hit=197
+Planning Time: 0.420 ms
+Execution Time: 64.896 ms

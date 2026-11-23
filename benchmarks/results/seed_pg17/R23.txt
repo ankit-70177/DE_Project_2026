@@ -1,0 +1,30 @@
+=== R23 run 1 ===
+Limit  (cost=8416.42..8417.47 rows=25 width=24) (actual time=13.859..13.861 rows=25 loops=1)
+  Buffers: shared hit=96 read=1250
+  ->  Index Only Scan using idx_streams_started_at_cover on streams  (cost=0.42..10520.42 rows=250000 width=24) (actual time=0.026..10.436 rows=200025 loops=1)
+        Heap Fetches: 0
+        Buffers: shared hit=96 read=1250
+Planning:
+  Buffers: shared hit=188
+Planning Time: 0.263 ms
+Execution Time: 13.872 ms
+=== R23 run 2 ===
+Limit  (cost=8416.42..8417.47 rows=25 width=24) (actual time=12.416..12.417 rows=25 loops=1)
+  Buffers: shared hit=1346
+  ->  Index Only Scan using idx_streams_started_at_cover on streams  (cost=0.42..10520.42 rows=250000 width=24) (actual time=0.024..9.094 rows=200025 loops=1)
+        Heap Fetches: 0
+        Buffers: shared hit=1346
+Planning:
+  Buffers: shared hit=188
+Planning Time: 0.267 ms
+Execution Time: 12.427 ms
+=== R23 run 3 ===
+Limit  (cost=8416.42..8417.47 rows=25 width=24) (actual time=12.665..12.667 rows=25 loops=1)
+  Buffers: shared hit=1346
+  ->  Index Only Scan using idx_streams_started_at_cover on streams  (cost=0.42..10520.42 rows=250000 width=24) (actual time=0.026..9.434 rows=200025 loops=1)
+        Heap Fetches: 0
+        Buffers: shared hit=1346
+Planning:
+  Buffers: shared hit=188
+Planning Time: 0.251 ms
+Execution Time: 12.678 ms

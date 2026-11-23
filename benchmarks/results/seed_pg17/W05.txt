@@ -1,0 +1,69 @@
+=== W05 run 1 ===
+Delete on playlist_tracks  (cost=13.16..112.55 rows=0 width=0) (actual time=0.044..0.045 rows=0 loops=1)
+  Buffers: shared hit=16 read=1
+  InitPlan 1
+    ->  Index Scan using tracks_pkey on tracks tracks_1  (cost=0.29..8.31 rows=1 width=4) (actual time=0.005..0.005 rows=1 loops=1)
+          Index Cond: (track_id = 1389)
+          Buffers: shared hit=3
+  ->  Nested Loop  (cost=4.85..104.24 rows=12 width=12) (actual time=0.028..0.034 rows=2 loops=1)
+        Buffers: shared hit=12 read=1
+        ->  Index Scan using idx_tracks_album_disc_track on tracks  (cost=0.42..19.04 rows=7 width=10) (actual time=0.018..0.018 rows=1 loops=1)
+              Index Cond: (album_id = (InitPlan 1).col1)
+              Buffers: shared hit=6 read=1
+        ->  Bitmap Heap Scan on playlist_tracks  (cost=4.43..12.15 rows=2 width=10) (actual time=0.009..0.015 rows=2 loops=1)
+              Recheck Cond: (track_id = tracks.track_id)
+              Heap Blocks: exact=3
+              Buffers: shared hit=6
+              ->  Bitmap Index Scan on idx_playlist_tracks_track_playlist  (cost=0.00..4.43 rows=2 width=0) (actual time=0.005..0.005 rows=5 loops=1)
+                    Index Cond: (track_id = tracks.track_id)
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=317
+Planning Time: 0.607 ms
+Execution Time: 0.095 ms
+=== W05 run 2 ===
+Delete on playlist_tracks  (cost=13.16..112.55 rows=0 width=0) (actual time=0.048..0.049 rows=0 loops=1)
+  Buffers: shared hit=15
+  InitPlan 1
+    ->  Index Scan using tracks_pkey on tracks tracks_1  (cost=0.29..8.31 rows=1 width=4) (actual time=0.005..0.006 rows=1 loops=1)
+          Index Cond: (track_id = 1389)
+          Buffers: shared hit=3
+  ->  Nested Loop  (cost=4.85..104.24 rows=12 width=12) (actual time=0.031..0.038 rows=2 loops=1)
+        Buffers: shared hit=13
+        ->  Index Scan using idx_tracks_album_disc_track on tracks  (cost=0.42..19.04 rows=7 width=10) (actual time=0.016..0.017 rows=1 loops=1)
+              Index Cond: (album_id = (InitPlan 1).col1)
+              Buffers: shared hit=7
+        ->  Bitmap Heap Scan on playlist_tracks  (cost=4.43..12.15 rows=2 width=10) (actual time=0.014..0.020 rows=2 loops=1)
+              Recheck Cond: (track_id = tracks.track_id)
+              Heap Blocks: exact=3
+              Buffers: shared hit=6
+              ->  Bitmap Index Scan on idx_playlist_tracks_track_playlist  (cost=0.00..4.43 rows=2 width=0) (actual time=0.005..0.005 rows=5 loops=1)
+                    Index Cond: (track_id = tracks.track_id)
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=317
+Planning Time: 0.561 ms
+Execution Time: 0.105 ms
+=== W05 run 3 ===
+Delete on playlist_tracks  (cost=13.16..112.55 rows=0 width=0) (actual time=0.039..0.039 rows=0 loops=1)
+  Buffers: shared hit=15
+  InitPlan 1
+    ->  Index Scan using tracks_pkey on tracks tracks_1  (cost=0.29..8.31 rows=1 width=4) (actual time=0.004..0.004 rows=1 loops=1)
+          Index Cond: (track_id = 1389)
+          Buffers: shared hit=3
+  ->  Nested Loop  (cost=4.85..104.24 rows=12 width=12) (actual time=0.025..0.030 rows=2 loops=1)
+        Buffers: shared hit=13
+        ->  Index Scan using idx_tracks_album_disc_track on tracks  (cost=0.42..19.04 rows=7 width=10) (actual time=0.014..0.014 rows=1 loops=1)
+              Index Cond: (album_id = (InitPlan 1).col1)
+              Buffers: shared hit=7
+        ->  Bitmap Heap Scan on playlist_tracks  (cost=4.43..12.15 rows=2 width=10) (actual time=0.010..0.015 rows=2 loops=1)
+              Recheck Cond: (track_id = tracks.track_id)
+              Heap Blocks: exact=3
+              Buffers: shared hit=6
+              ->  Bitmap Index Scan on idx_playlist_tracks_track_playlist  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=5 loops=1)
+                    Index Cond: (track_id = tracks.track_id)
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=317
+Planning Time: 0.518 ms
+Execution Time: 0.088 ms

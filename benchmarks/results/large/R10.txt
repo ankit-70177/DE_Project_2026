@@ -1,0 +1,45 @@
+=== R10 run 1 ===
+GroupAggregate  (cost=37128.83..43310.15 rows=274725 width=18) (actual time=72.809..88.833 rows=180 loops=1)
+  Group Key: ((streams.started_at)::date), streams.platform
+  Buffers: shared hit=2812, temp read=690 written=693
+  ->  Sort  (cost=37128.83..37815.65 rows=274725 width=10) (actual time=72.605..80.142 rows=274725 loops=1)
+        Sort Key: ((streams.started_at)::date), streams.platform
+        Sort Method: external merge  Disk: 5520kB
+        Buffers: shared hit=2812, temp read=690 written=693
+        ->  Seq Scan on streams_p2026_06 streams  (cost=0.00..7613.69 rows=274725 width=10) (actual time=0.002..30.354 rows=274725 loops=1)
+              Filter: ((started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+              Buffers: shared hit=2806
+Planning:
+  Buffers: shared hit=496
+Planning Time: 0.490 ms
+Execution Time: 90.090 ms
+=== R10 run 2 ===
+GroupAggregate  (cost=37128.83..43310.15 rows=274725 width=18) (actual time=61.293..77.768 rows=180 loops=1)
+  Group Key: ((streams.started_at)::date), streams.platform
+  Buffers: shared hit=2812, temp read=690 written=693
+  ->  Sort  (cost=37128.83..37815.65 rows=274725 width=10) (actual time=61.088..68.828 rows=274725 loops=1)
+        Sort Key: ((streams.started_at)::date), streams.platform
+        Sort Method: external merge  Disk: 5520kB
+        Buffers: shared hit=2812, temp read=690 written=693
+        ->  Seq Scan on streams_p2026_06 streams  (cost=0.00..7613.69 rows=274725 width=10) (actual time=0.002..24.401 rows=274725 loops=1)
+              Filter: ((started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+              Buffers: shared hit=2806
+Planning:
+  Buffers: shared hit=496
+Planning Time: 0.492 ms
+Execution Time: 78.996 ms
+=== R10 run 3 ===
+GroupAggregate  (cost=37128.83..43310.15 rows=274725 width=18) (actual time=60.833..77.433 rows=180 loops=1)
+  Group Key: ((streams.started_at)::date), streams.platform
+  Buffers: shared hit=2812, temp read=690 written=693
+  ->  Sort  (cost=37128.83..37815.65 rows=274725 width=10) (actual time=60.630..68.417 rows=274725 loops=1)
+        Sort Key: ((streams.started_at)::date), streams.platform
+        Sort Method: external merge  Disk: 5520kB
+        Buffers: shared hit=2812, temp read=690 written=693
+        ->  Seq Scan on streams_p2026_06 streams  (cost=0.00..7613.69 rows=274725 width=10) (actual time=0.003..24.475 rows=274725 loops=1)
+              Filter: ((started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+              Buffers: shared hit=2806
+Planning:
+  Buffers: shared hit=496
+Planning Time: 0.499 ms
+Execution Time: 78.706 ms
