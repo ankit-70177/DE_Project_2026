@@ -1,0 +1,243 @@
+=== R12 run 1 ===
+Limit  (cost=8.98..3138.24 rows=200 width=20) (actual time=15.195..435.594 rows=200 loops=1)
+  Buffers: shared hit=32232 read=12913 written=1
+  ->  Nested Loop  (cost=8.98..2902398.16 rows=185500 width=20) (actual time=15.195..435.583 rows=200 loops=1)
+        Buffers: shared hit=32232 read=12913 written=1
+        ->  Nested Loop  (cost=8.56..2639754.67 rows=556499 width=20) (actual time=1.208..246.539 rows=1096 loops=1)
+              Buffers: shared hit=29750 read=11011 written=1
+              ->  Merge Append  (cost=8.13..341106.36 rows=5000001 width=20) (actual time=0.853..1.891 rows=10155 loops=1)
+                    Sort Key: s.started_at DESC
+                    Buffers: shared hit=58 read=83
+                    ->  Index Only Scan using streams_p2025_01_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_01 s_1  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.026..0.026 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_02_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_02 s_2  (cost=0.42..10766.59 rows=256411 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_03_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_03 s_3  (cost=0.42..11918.65 rows=283882 width=20) (actual time=0.026..0.026 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_04_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_04 s_4  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_05_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_05 s_5  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.024..0.024 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_06_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_06 s_6  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_07_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_07 s_7  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.024..0.024 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_08_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_08 s_8  (cost=0.42..11914.67 rows=283883 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_09_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_09 s_9  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_10_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_10 s_10  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_11_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_11 s_11  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.025..0.025 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_12_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_12 s_12  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.023..0.024 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_01_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_01 s_13  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.252..0.252 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3
+                    ->  Index Only Scan using streams_p2026_02_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_02 s_14  (cost=0.42..10766.57 rows=256410 width=20) (actual time=0.208..0.208 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3
+                    ->  Index Only Scan using streams_p2026_03_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_03 s_15  (cost=0.42..11914.67 rows=283883 width=20) (actual time=0.029..0.029 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3
+                    ->  Index Only Scan using streams_p2026_04_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_04 s_16  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.026..0.026 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3
+                    ->  Index Only Scan using streams_p2026_05_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_05 s_17  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.025..0.026 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3
+                    ->  Index Only Scan using streams_p2026_06_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_06 s_18  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.022..0.657 rows=10155 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4 read=68
+                    ->  Index Only Scan using streams_p_default_started_at_stream_id_user_id_track_id_ms__idx on streams_p_default s_19  (cost=0.12..8.14 rows=1 width=20) (actual time=0.003..0.003 rows=0 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1
+              ->  Index Scan using tracks_pkey on tracks t  (cost=0.43..0.46 rows=1 width=4) (actual time=0.024..0.024 rows=0 loops=10155)
+                    Index Cond: (track_id = s.track_id)
+                    Filter: explicit
+                    Rows Removed by Filter: 1
+                    Buffers: shared hit=29692 read=10928 written=1
+        ->  Index Scan using users_pkey on users u  (cost=0.42..0.46 rows=1 width=8) (actual time=0.172..0.172 rows=0 loops=1096)
+              Index Cond: (user_id = s.user_id)
+              Filter: (age(((s.started_at)::date)::timestamp with time zone, (birth_date)::timestamp with time zone) < '18 years'::interval)
+              Rows Removed by Filter: 1
+              Buffers: shared hit=2482 read=1902
+Planning:
+  Buffers: shared hit=3298 read=10
+Planning Time: 5.975 ms
+Execution Time: 435.663 ms
+=== R12 run 2 ===
+Limit  (cost=8.98..3138.24 rows=200 width=20) (actual time=0.886..29.502 rows=200 loops=1)
+  Buffers: shared hit=35073 read=10072
+  ->  Nested Loop  (cost=8.98..2902398.16 rows=185500 width=20) (actual time=0.886..29.494 rows=200 loops=1)
+        Buffers: shared hit=35073 read=10072
+        ->  Nested Loop  (cost=8.56..2639754.67 rows=556499 width=20) (actual time=0.459..25.872 rows=1096 loops=1)
+              Buffers: shared hit=32389 read=8372
+              ->  Merge Append  (cost=8.13..341106.36 rows=5000001 width=20) (actual time=0.439..1.381 rows=10155 loops=1)
+                    Sort Key: s.started_at DESC
+                    Buffers: shared hit=65 read=76
+                    ->  Index Only Scan using streams_p2025_01_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_01 s_1  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_02_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_02 s_2  (cost=0.42..10766.59 rows=256411 width=20) (actual time=0.020..0.020 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_03_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_03 s_3  (cost=0.42..11918.65 rows=283882 width=20) (actual time=0.025..0.025 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_04_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_04 s_4  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_05_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_05 s_5  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_06_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_06 s_6  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_07_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_07 s_7  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_08_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_08 s_8  (cost=0.42..11914.67 rows=283883 width=20) (actual time=0.021..0.021 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_09_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_09 s_9  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_10_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_10 s_10  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_11_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_11 s_11  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_12_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_12 s_12  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_01_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_01 s_13  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.041..0.041 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=2 read=2
+                    ->  Index Only Scan using streams_p2026_02_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_02 s_14  (cost=0.42..10766.57 rows=256410 width=20) (actual time=0.031..0.031 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=2 read=2
+                    ->  Index Only Scan using streams_p2026_03_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_03 s_15  (cost=0.42..11914.67 rows=283883 width=20) (actual time=0.027..0.027 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=2 read=2
+                    ->  Index Only Scan using streams_p2026_04_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_04 s_16  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.025..0.025 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=2 read=2
+                    ->  Index Only Scan using streams_p2026_05_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_05 s_17  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=2 read=2
+                    ->  Index Only Scan using streams_p2026_06_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_06 s_18  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.022..0.610 rows=10155 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=6 read=66
+                    ->  Index Only Scan using streams_p_default_started_at_stream_id_user_id_track_id_ms__idx on streams_p_default s_19  (cost=0.12..8.14 rows=1 width=20) (actual time=0.003..0.003 rows=0 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1
+              ->  Index Scan using tracks_pkey on tracks t  (cost=0.43..0.46 rows=1 width=4) (actual time=0.002..0.002 rows=0 loops=10155)
+                    Index Cond: (track_id = s.track_id)
+                    Filter: explicit
+                    Rows Removed by Filter: 1
+                    Buffers: shared hit=32324 read=8296
+        ->  Index Scan using users_pkey on users u  (cost=0.42..0.46 rows=1 width=8) (actual time=0.003..0.003 rows=0 loops=1096)
+              Index Cond: (user_id = s.user_id)
+              Filter: (age(((s.started_at)::date)::timestamp with time zone, (birth_date)::timestamp with time zone) < '18 years'::interval)
+              Rows Removed by Filter: 1
+              Buffers: shared hit=2684 read=1700
+Planning:
+  Buffers: shared hit=3303 read=5
+Planning Time: 3.845 ms
+Execution Time: 29.568 ms
+=== R12 run 3 ===
+Limit  (cost=8.98..3138.24 rows=200 width=20) (actual time=0.723..19.700 rows=200 loops=1)
+  Buffers: shared hit=45143 read=2
+  ->  Nested Loop  (cost=8.98..2902398.16 rows=185500 width=20) (actual time=0.723..19.692 rows=200 loops=1)
+        Buffers: shared hit=45143 read=2
+        ->  Nested Loop  (cost=8.56..2639754.67 rows=556499 width=20) (actual time=0.402..17.477 rows=1096 loops=1)
+              Buffers: shared hit=40759 read=2
+              ->  Merge Append  (cost=8.13..341106.36 rows=5000001 width=20) (actual time=0.387..1.172 rows=10155 loops=1)
+                    Sort Key: s.started_at DESC
+                    Buffers: shared hit=141
+                    ->  Index Only Scan using streams_p2025_01_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_01 s_1  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_02_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_02 s_2  (cost=0.42..10766.59 rows=256411 width=20) (actual time=0.021..0.021 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_03_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_03 s_3  (cost=0.42..11918.65 rows=283882 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_04_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_04 s_4  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_05_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_05 s_5  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_06_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_06 s_6  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.021..0.021 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_07_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_07 s_7  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_08_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_08 s_8  (cost=0.42..11914.67 rows=283883 width=20) (actual time=0.020..0.020 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_09_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_09 s_9  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.021..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_10_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_10 s_10  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.020..0.020 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_11_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_11 s_11  (cost=0.42..11533.31 rows=274726 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_12_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2025_12 s_12  (cost=0.42..11914.65 rows=283882 width=20) (actual time=0.020..0.020 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_01_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_01 s_13  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.021..0.021 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_02_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_02 s_14  (cost=0.42..10766.57 rows=256410 width=20) (actual time=0.022..0.022 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_03_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_03 s_15  (cost=0.42..11914.67 rows=283883 width=20) (actual time=0.023..0.023 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_04_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_04 s_16  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.021..0.021 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_05_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_05 s_17  (cost=0.42..11918.67 rows=283883 width=20) (actual time=0.019..0.019 rows=1 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_06_started_at_stream_id_user_id_track_id_ms_p_idx on streams_p2026_06 s_18  (cost=0.42..11533.30 rows=274725 width=20) (actual time=0.020..0.465 rows=10155 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=72
+                    ->  Index Only Scan using streams_p_default_started_at_stream_id_user_id_track_id_ms__idx on streams_p_default s_19  (cost=0.12..8.14 rows=1 width=20) (actual time=0.002..0.002 rows=0 loops=1)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1
+              ->  Index Scan using tracks_pkey on tracks t  (cost=0.43..0.46 rows=1 width=4) (actual time=0.002..0.002 rows=0 loops=10155)
+                    Index Cond: (track_id = s.track_id)
+                    Filter: explicit
+                    Rows Removed by Filter: 1
+                    Buffers: shared hit=40618 read=2
+        ->  Index Scan using users_pkey on users u  (cost=0.42..0.46 rows=1 width=8) (actual time=0.002..0.002 rows=0 loops=1096)
+              Index Cond: (user_id = s.user_id)
+              Filter: (age(((s.started_at)::date)::timestamp with time zone, (birth_date)::timestamp with time zone) < '18 years'::interval)
+              Rows Removed by Filter: 1
+              Buffers: shared hit=4384
+Planning:
+  Buffers: shared hit=3282 read=26
+Planning Time: 3.588 ms
+Execution Time: 19.758 ms

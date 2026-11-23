@@ -1,0 +1,90 @@
+=== R07 run 1 ===
+Limit  (cost=35702.94..35702.99 rows=20 width=12) (actual time=591.344..591.350 rows=20 loops=1)
+  Buffers: shared hit=587016 read=7712 written=614
+  ->  Sort  (cost=35702.94..35806.38 rows=41377 width=12) (actual time=591.343..591.348 rows=20 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=587016 read=7712 written=614
+        ->  HashAggregate  (cost=34188.14..34601.91 rows=41377 width=12) (actual time=587.244..589.886 rows=51913 loops=1)
+              Group Key: ta.artist_id
+              Batches: 1  Memory Usage: 6417kB
+              Buffers: shared hit=587013 read=7712 written=614
+              ->  Nested Loop  (cost=0.44..32870.98 rows=263433 width=4) (actual time=0.780..562.270 rows=244813 loops=1)
+                    Buffers: shared hit=587013 read=7712 written=614
+                    ->  Seq Scan on streams_p2026_06 s  (cost=0.00..7613.69 rows=214215 width=4) (actual time=0.024..16.498 rows=214364 loops=1)
+                          Filter: ((ms_played >= 30000) AND (started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Rows Removed by Filter: 60361
+                          Buffers: shared read=2806 written=12
+                    ->  Memoize  (cost=0.44..0.53 rows=1 width=8) (actual time=0.002..0.002 rows=1 loops=214364)
+                          Cache Key: s.track_id
+                          Cache Mode: logical
+                          Hits: 17058  Misses: 197306  Evictions: 123530  Overflows: 0  Memory Usage: 8193kB
+                          Buffers: shared hit=587013 read=4906 written=602
+                          ->  Index Only Scan using track_artists_pkey on track_artists ta  (cost=0.43..0.52 rows=1 width=8) (actual time=0.002..0.002 rows=1 loops=197306)
+                                Index Cond: (track_id = s.track_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=587013 read=4906 written=602
+Planning:
+  Buffers: shared hit=543 read=6
+Planning Time: 2.390 ms
+Execution Time: 591.635 ms
+=== R07 run 2 ===
+Limit  (cost=35702.94..35702.99 rows=20 width=12) (actual time=283.320..283.321 rows=20 loops=1)
+  Buffers: shared hit=594713 read=15
+  ->  Sort  (cost=35702.94..35806.38 rows=41377 width=12) (actual time=283.319..283.320 rows=20 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=594713 read=15
+        ->  HashAggregate  (cost=34188.14..34601.91 rows=41377 width=12) (actual time=279.274..281.840 rows=51913 loops=1)
+              Group Key: ta.artist_id
+              Batches: 1  Memory Usage: 6417kB
+              Buffers: shared hit=594710 read=15
+              ->  Nested Loop  (cost=0.44..32870.98 rows=263433 width=4) (actual time=0.097..255.122 rows=244813 loops=1)
+                    Buffers: shared hit=594710 read=15
+                    ->  Seq Scan on streams_p2026_06 s  (cost=0.00..7613.69 rows=214215 width=4) (actual time=0.005..16.001 rows=214364 loops=1)
+                          Filter: ((ms_played >= 30000) AND (started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Rows Removed by Filter: 60361
+                          Buffers: shared hit=2791 read=15
+                    ->  Memoize  (cost=0.44..0.53 rows=1 width=8) (actual time=0.001..0.001 rows=1 loops=214364)
+                          Cache Key: s.track_id
+                          Cache Mode: logical
+                          Hits: 17058  Misses: 197306  Evictions: 123530  Overflows: 0  Memory Usage: 8193kB
+                          Buffers: shared hit=591919
+                          ->  Index Only Scan using track_artists_pkey on track_artists ta  (cost=0.43..0.52 rows=1 width=8) (actual time=0.001..0.001 rows=1 loops=197306)
+                                Index Cond: (track_id = s.track_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=591919
+Planning:
+  Buffers: shared hit=543 read=6
+Planning Time: 0.723 ms
+Execution Time: 283.459 ms
+=== R07 run 3 ===
+Limit  (cost=35702.94..35702.99 rows=20 width=12) (actual time=282.659..282.665 rows=20 loops=1)
+  Buffers: shared hit=594728
+  ->  Sort  (cost=35702.94..35806.38 rows=41377 width=12) (actual time=282.659..282.663 rows=20 loops=1)
+        Sort Key: (count(*)) DESC
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=594728
+        ->  HashAggregate  (cost=34188.14..34601.91 rows=41377 width=12) (actual time=278.242..281.144 rows=51913 loops=1)
+              Group Key: ta.artist_id
+              Batches: 1  Memory Usage: 6417kB
+              Buffers: shared hit=594725
+              ->  Nested Loop  (cost=0.44..32870.98 rows=263433 width=4) (actual time=0.097..254.313 rows=244813 loops=1)
+                    Buffers: shared hit=594725
+                    ->  Seq Scan on streams_p2026_06 s  (cost=0.00..7613.69 rows=214215 width=4) (actual time=0.002..14.776 rows=214364 loops=1)
+                          Filter: ((ms_played >= 30000) AND (started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2026-07-01 00:00:00+05:30'::timestamp with time zone))
+                          Rows Removed by Filter: 60361
+                          Buffers: shared hit=2806
+                    ->  Memoize  (cost=0.44..0.53 rows=1 width=8) (actual time=0.001..0.001 rows=1 loops=214364)
+                          Cache Key: s.track_id
+                          Cache Mode: logical
+                          Hits: 17058  Misses: 197306  Evictions: 123530  Overflows: 0  Memory Usage: 8193kB
+                          Buffers: shared hit=591919
+                          ->  Index Only Scan using track_artists_pkey on track_artists ta  (cost=0.43..0.52 rows=1 width=8) (actual time=0.001..0.001 rows=1 loops=197306)
+                                Index Cond: (track_id = s.track_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=591919
+Planning:
+  Buffers: shared hit=549
+Planning Time: 0.695 ms
+Execution Time: 282.792 ms

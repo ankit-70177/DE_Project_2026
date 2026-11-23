@@ -1,0 +1,291 @@
+=== R04 run 1 ===
+Limit  (cost=113.33..113.38 rows=19 width=34) (actual time=1.377..1.378 rows=6 loops=1)
+  Buffers: shared hit=26 read=60 written=35
+  ->  Sort  (cost=113.33..113.38 rows=19 width=34) (actual time=1.376..1.377 rows=6 loops=1)
+        Sort Key: s.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=26 read=60 written=35
+        ->  Nested Loop  (cost=0.86..112.93 rows=19 width=34) (actual time=0.320..1.370 rows=6 loops=1)
+              Buffers: shared hit=23 read=60 written=35
+              ->  Append  (cost=0.42..80.01 rows=19 width=23) (actual time=0.068..0.370 rows=6 loops=1)
+                    Buffers: shared hit=5 read=54 written=32
+                    ->  Index Only Scan using streams_p2025_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_01 s_1  (cost=0.42..4.44 rows=1 width=22) (actual time=0.009..0.009 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3
+                    ->  Index Only Scan using streams_p2025_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_02 s_2  (cost=0.42..4.44 rows=1 width=22) (actual time=0.010..0.010 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3
+                    ->  Index Only Scan using streams_p2025_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_03 s_3  (cost=0.42..4.44 rows=1 width=22) (actual time=0.008..0.008 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3
+                    ->  Index Only Scan using streams_p2025_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_04 s_4  (cost=0.42..4.44 rows=1 width=22) (actual time=0.008..0.008 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3
+                    ->  Index Only Scan using streams_p2025_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_05 s_5  (cost=0.42..4.44 rows=1 width=22) (actual time=0.033..0.033 rows=2 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3
+                    ->  Index Only Scan using streams_p2025_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_06 s_6  (cost=0.42..4.44 rows=1 width=22) (actual time=0.009..0.009 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3
+                    ->  Index Only Scan using streams_p2025_07_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_07 s_7  (cost=0.42..4.44 rows=1 width=22) (actual time=0.032..0.032 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3
+                    ->  Index Only Scan using streams_p2025_08_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_08 s_8  (cost=0.42..4.44 rows=1 width=22) (actual time=0.019..0.019 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3 written=2
+                    ->  Index Only Scan using streams_p2025_09_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_09 s_9  (cost=0.42..4.44 rows=1 width=22) (actual time=0.040..0.040 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3 written=3
+                    ->  Index Only Scan using streams_p2025_10_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_10 s_10  (cost=0.42..4.44 rows=1 width=22) (actual time=0.038..0.039 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3 written=3
+                    ->  Index Only Scan using streams_p2025_11_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_11 s_11  (cost=0.42..4.44 rows=1 width=22) (actual time=0.016..0.016 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3 written=3
+                    ->  Index Only Scan using streams_p2025_12_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_12 s_12  (cost=0.42..4.44 rows=1 width=22) (actual time=0.017..0.017 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3 written=3
+                    ->  Index Only Scan using streams_p2026_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_01 s_13  (cost=0.42..4.44 rows=1 width=22) (actual time=0.015..0.015 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3 written=3
+                    ->  Index Only Scan using streams_p2026_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_02 s_14  (cost=0.42..4.44 rows=1 width=22) (actual time=0.040..0.040 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=1 read=3 written=3
+                    ->  Index Only Scan using streams_p2026_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_03 s_15  (cost=0.42..4.44 rows=1 width=22) (actual time=0.017..0.017 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3 written=3
+                    ->  Index Only Scan using streams_p2026_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_04 s_16  (cost=0.42..4.44 rows=1 width=22) (actual time=0.017..0.017 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3 written=3
+                    ->  Index Only Scan using streams_p2026_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_05 s_17  (cost=0.42..4.44 rows=1 width=22) (actual time=0.015..0.015 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3 written=3
+                    ->  Index Only Scan using streams_p2026_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_06 s_18  (cost=0.42..4.44 rows=1 width=22) (actual time=0.022..0.022 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared read=3 written=3
+                    ->  Seq Scan on streams_p_default s_19  (cost=0.00..0.00 rows=1 width=48) (actual time=0.001..0.001 rows=0 loops=1)
+                          Filter: (user_id = 1038)
+              ->  Memoize  (cost=0.44..8.46 rows=1 width=19) (actual time=0.166..0.166 rows=1 loops=6)
+                    Cache Key: s.track_id
+                    Cache Mode: logical
+                    Hits: 0  Misses: 6  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                    Buffers: shared hit=18 read=6 written=3
+                    ->  Index Scan using tracks_pkey on tracks t  (cost=0.43..8.45 rows=1 width=19) (actual time=0.165..0.165 rows=1 loops=6)
+                          Index Cond: (track_id = s.track_id)
+                          Buffers: shared hit=18 read=6 written=3
+Planning:
+  Buffers: shared hit=3187 read=75
+Planning Time: 4.532 ms
+Execution Time: 1.423 ms
+=== R04 run 2 ===
+Limit  (cost=113.33..113.38 rows=19 width=34) (actual time=0.250..0.251 rows=6 loops=1)
+  Buffers: shared hit=86
+  ->  Sort  (cost=113.33..113.38 rows=19 width=34) (actual time=0.249..0.250 rows=6 loops=1)
+        Sort Key: s.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=86
+        ->  Nested Loop  (cost=0.86..112.93 rows=19 width=34) (actual time=0.062..0.243 rows=6 loops=1)
+              Buffers: shared hit=83
+              ->  Append  (cost=0.42..80.01 rows=19 width=23) (actual time=0.049..0.197 rows=6 loops=1)
+                    Buffers: shared hit=59
+                    ->  Index Only Scan using streams_p2025_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_01 s_1  (cost=0.42..4.44 rows=1 width=22) (actual time=0.007..0.007 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_02 s_2  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_03 s_3  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_04 s_4  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_05 s_5  (cost=0.42..4.44 rows=1 width=22) (actual time=0.025..0.025 rows=2 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_06 s_6  (cost=0.42..4.44 rows=1 width=22) (actual time=0.007..0.007 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_07_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_07 s_7  (cost=0.42..4.44 rows=1 width=22) (actual time=0.024..0.024 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_08_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_08 s_8  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_09_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_09 s_9  (cost=0.42..4.44 rows=1 width=22) (actual time=0.022..0.022 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_10_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_10 s_10  (cost=0.42..4.44 rows=1 width=22) (actual time=0.023..0.023 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_11_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_11 s_11  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_12_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_12 s_12  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_01 s_13  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_02 s_14  (cost=0.42..4.44 rows=1 width=22) (actual time=0.021..0.021 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_03 s_15  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_04 s_16  (cost=0.42..4.44 rows=1 width=22) (actual time=0.007..0.007 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_05 s_17  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_06 s_18  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Seq Scan on streams_p_default s_19  (cost=0.00..0.00 rows=1 width=48) (actual time=0.001..0.001 rows=0 loops=1)
+                          Filter: (user_id = 1038)
+              ->  Memoize  (cost=0.44..8.46 rows=1 width=19) (actual time=0.007..0.007 rows=1 loops=6)
+                    Cache Key: s.track_id
+                    Cache Mode: logical
+                    Hits: 0  Misses: 6  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                    Buffers: shared hit=24
+                    ->  Index Scan using tracks_pkey on tracks t  (cost=0.43..8.45 rows=1 width=19) (actual time=0.006..0.006 rows=1 loops=6)
+                          Index Cond: (track_id = s.track_id)
+                          Buffers: shared hit=24
+Planning:
+  Buffers: shared hit=3262
+Planning Time: 4.055 ms
+Execution Time: 0.297 ms
+=== R04 run 3 ===
+Limit  (cost=113.33..113.38 rows=19 width=34) (actual time=0.234..0.235 rows=6 loops=1)
+  Buffers: shared hit=86
+  ->  Sort  (cost=113.33..113.38 rows=19 width=34) (actual time=0.234..0.235 rows=6 loops=1)
+        Sort Key: s.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=86
+        ->  Nested Loop  (cost=0.86..112.93 rows=19 width=34) (actual time=0.056..0.228 rows=6 loops=1)
+              Buffers: shared hit=83
+              ->  Append  (cost=0.42..80.01 rows=19 width=23) (actual time=0.045..0.188 rows=6 loops=1)
+                    Buffers: shared hit=59
+                    ->  Index Only Scan using streams_p2025_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_01 s_1  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_02 s_2  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_03 s_3  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_04 s_4  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_05 s_5  (cost=0.42..4.44 rows=1 width=22) (actual time=0.024..0.024 rows=2 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_06 s_6  (cost=0.42..4.44 rows=1 width=22) (actual time=0.010..0.011 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_07_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_07 s_7  (cost=0.42..4.44 rows=1 width=22) (actual time=0.022..0.023 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_08_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_08 s_8  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_09_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_09 s_9  (cost=0.42..4.44 rows=1 width=22) (actual time=0.021..0.021 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_10_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_10 s_10  (cost=0.42..4.44 rows=1 width=22) (actual time=0.022..0.022 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2025_11_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_11 s_11  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2025_12_user_id_started_at_track_id_ms_played_plat_idx on streams_p2025_12 s_12  (cost=0.42..4.44 rows=1 width=22) (actual time=0.006..0.006 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_01_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_01 s_13  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_02_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_02 s_14  (cost=0.42..4.44 rows=1 width=22) (actual time=0.021..0.021 rows=1 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=4
+                    ->  Index Only Scan using streams_p2026_03_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_03 s_15  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_04_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_04 s_16  (cost=0.42..4.44 rows=1 width=22) (actual time=0.007..0.007 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_05_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_05 s_17  (cost=0.42..4.44 rows=1 width=22) (actual time=0.004..0.004 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using streams_p2026_06_user_id_started_at_track_id_ms_played_plat_idx on streams_p2026_06 s_18  (cost=0.42..4.44 rows=1 width=22) (actual time=0.005..0.005 rows=0 loops=1)
+                          Index Cond: (user_id = 1038)
+                          Heap Fetches: 0
+                          Buffers: shared hit=3
+                    ->  Seq Scan on streams_p_default s_19  (cost=0.00..0.00 rows=1 width=48) (actual time=0.001..0.001 rows=0 loops=1)
+                          Filter: (user_id = 1038)
+              ->  Memoize  (cost=0.44..8.46 rows=1 width=19) (actual time=0.006..0.006 rows=1 loops=6)
+                    Cache Key: s.track_id
+                    Cache Mode: logical
+                    Hits: 0  Misses: 6  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+                    Buffers: shared hit=24
+                    ->  Index Scan using tracks_pkey on tracks t  (cost=0.43..8.45 rows=1 width=19) (actual time=0.005..0.005 rows=1 loops=6)
+                          Index Cond: (track_id = s.track_id)
+                          Buffers: shared hit=24
+Planning:
+  Buffers: shared hit=3262
+Planning Time: 4.040 ms
+Execution Time: 0.280 ms

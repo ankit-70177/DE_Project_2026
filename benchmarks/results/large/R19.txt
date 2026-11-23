@@ -1,0 +1,204 @@
+=== R19 run 1 ===
+Sort  (cost=167720.42..167728.32 rows=3162 width=39) (actual time=925.695..925.752 rows=3249 loops=1)
+  Sort Key: (count(s.stream_id)) DESC
+  Sort Method: quicksort  Memory: 281kB
+  Buffers: shared hit=7494 read=54405, temp read=12593 written=12593
+  ->  HashAggregate  (cost=167504.98..167536.60 rows=3162 width=39) (actual time=925.282..925.421 rows=3249 loops=1)
+        Group Key: ar.artist_id
+        Batches: 1  Memory Usage: 625kB
+        Buffers: shared hit=7491 read=54405, temp read=12593 written=12593
+        ->  Hash Right Join  (cost=17024.22..165074.66 rows=324043 width=35) (actual time=134.279..889.534 rows=496509 loops=1)
+              Hash Cond: (s.track_id = ta.track_id)
+              Buffers: shared hit=7491 read=54405, temp read=12593 written=12593
+              ->  Append  (cost=0.00..126060.01 rows=5000001 width=16) (actual time=0.012..367.727 rows=5000000 loops=1)
+                    Buffers: shared read=51060
+                    ->  Seq Scan on streams_p2025_01 s_1  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.011..13.456 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_02 s_2  (cost=0.00..5182.11 rows=256411 width=16) (actual time=0.011..11.732 rows=256411 loops=1)
+                          Buffers: shared read=2618
+                    ->  Seq Scan on streams_p2025_03 s_3  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.012..12.542 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_04 s_4  (cost=0.00..5552.26 rows=274726 width=16) (actual time=0.007..12.051 rows=274726 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2025_05 s_5  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.007..12.110 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_06 s_6  (cost=0.00..5553.26 rows=274726 width=16) (actual time=0.008..11.353 rows=274726 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p2025_07 s_7  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.007..15.044 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_08 s_8  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.033..12.432 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_09 s_9  (cost=0.00..5552.25 rows=274725 width=16) (actual time=0.026..11.538 rows=274725 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2025_10 s_10  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.009..11.779 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_11 s_11  (cost=0.00..5553.26 rows=274726 width=16) (actual time=0.014..11.406 rows=274726 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p2025_12 s_12  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.008..11.739 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_01 s_13  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.009..11.762 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_02 s_14  (cost=0.00..5183.10 rows=256410 width=16) (actual time=0.009..10.683 rows=256410 loops=1)
+                          Buffers: shared read=2619
+                    ->  Seq Scan on streams_p2026_03 s_15  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.014..11.777 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_04 s_16  (cost=0.00..5552.25 rows=274725 width=16) (actual time=0.011..11.514 rows=274725 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2026_05 s_17  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.011..11.905 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_06 s_18  (cost=0.00..5553.25 rows=274725 width=16) (actual time=0.009..11.392 rows=274725 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p_default s_19  (cost=0.00..0.00 rows=1 width=16) (actual time=0.008..0.008 rows=0 loops=1)
+              ->  Hash  (cost=16000.04..16000.04 rows=81934 width=27) (actual time=134.135..134.136 rows=132871 loops=1)
+                    Buckets: 131072 (originally 131072)  Batches: 2 (originally 1)  Memory Usage: 7169kB
+                    Buffers: shared hit=7491 read=3345, temp written=384
+                    ->  Nested Loop Left Join  (cost=0.43..16000.04 rows=81934 width=27) (actual time=0.013..122.189 rows=132871 loops=1)
+                          Buffers: shared hit=7491 read=3345
+                          ->  Seq Scan on artists ar  (cost=0.00..1192.00 rows=3162 width=23) (actual time=0.005..4.051 rows=3249 loops=1)
+                                Filter: is_verified
+                                Rows Removed by Filter: 56751
+                                Buffers: shared read=592
+                          ->  Index Only Scan using idx_track_artists_artist_track on track_artists ta  (cost=0.43..4.30 rows=38 width=8) (actual time=0.031..0.035 rows=41 loops=3249)
+                                Index Cond: (artist_id = ar.artist_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=7491 read=2753
+Planning:
+  Buffers: shared hit=2854 read=226
+Planning Time: 4.843 ms
+Execution Time: 925.903 ms
+=== R19 run 2 ===
+Sort  (cost=167720.42..167728.32 rows=3162 width=39) (actual time=811.236..811.294 rows=3249 loops=1)
+  Sort Key: (count(s.stream_id)) DESC
+  Sort Method: quicksort  Memory: 281kB
+  Buffers: shared hit=7494 read=54405, temp read=12593 written=12593
+  ->  HashAggregate  (cost=167504.98..167536.60 rows=3162 width=39) (actual time=810.837..810.980 rows=3249 loops=1)
+        Group Key: ar.artist_id
+        Batches: 1  Memory Usage: 625kB
+        Buffers: shared hit=7491 read=54405, temp read=12593 written=12593
+        ->  Hash Right Join  (cost=17024.22..165074.66 rows=324043 width=35) (actual time=26.274..775.512 rows=496509 loops=1)
+              Hash Cond: (s.track_id = ta.track_id)
+              Buffers: shared hit=7491 read=54405, temp read=12593 written=12593
+              ->  Append  (cost=0.00..126060.01 rows=5000001 width=16) (actual time=0.014..365.570 rows=5000000 loops=1)
+                    Buffers: shared read=51060
+                    ->  Seq Scan on streams_p2025_01 s_1  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.012..12.846 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_02 s_2  (cost=0.00..5182.11 rows=256411 width=16) (actual time=0.007..11.496 rows=256411 loops=1)
+                          Buffers: shared read=2618
+                    ->  Seq Scan on streams_p2025_03 s_3  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.011..12.785 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_04 s_4  (cost=0.00..5552.26 rows=274726 width=16) (actual time=0.007..12.306 rows=274726 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2025_05 s_5  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.009..12.300 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_06 s_6  (cost=0.00..5553.26 rows=274726 width=16) (actual time=0.007..11.607 rows=274726 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p2025_07 s_7  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.009..11.916 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_08 s_8  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.006..12.025 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_09 s_9  (cost=0.00..5552.25 rows=274725 width=16) (actual time=0.008..11.573 rows=274725 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2025_10 s_10  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.006..12.093 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_11 s_11  (cost=0.00..5553.26 rows=274726 width=16) (actual time=0.011..11.813 rows=274726 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p2025_12 s_12  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.007..12.389 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_01 s_13  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.008..12.106 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_02 s_14  (cost=0.00..5183.10 rows=256410 width=16) (actual time=0.008..11.074 rows=256410 loops=1)
+                          Buffers: shared read=2619
+                    ->  Seq Scan on streams_p2026_03 s_15  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.008..12.197 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_04 s_16  (cost=0.00..5552.25 rows=274725 width=16) (actual time=0.006..11.778 rows=274725 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2026_05 s_17  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.009..11.902 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_06 s_18  (cost=0.00..5553.25 rows=274725 width=16) (actual time=0.009..11.724 rows=274725 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p_default s_19  (cost=0.00..0.00 rows=1 width=16) (actual time=0.005..0.005 rows=0 loops=1)
+              ->  Hash  (cost=16000.04..16000.04 rows=81934 width=27) (actual time=26.147..26.149 rows=132871 loops=1)
+                    Buckets: 131072 (originally 131072)  Batches: 2 (originally 1)  Memory Usage: 7169kB
+                    Buffers: shared hit=7491 read=3345, temp written=384
+                    ->  Nested Loop Left Join  (cost=0.43..16000.04 rows=81934 width=27) (actual time=0.024..17.187 rows=132871 loops=1)
+                          Buffers: shared hit=7491 read=3345
+                          ->  Seq Scan on artists ar  (cost=0.00..1192.00 rows=3162 width=23) (actual time=0.018..2.098 rows=3249 loops=1)
+                                Filter: is_verified
+                                Rows Removed by Filter: 56751
+                                Buffers: shared read=592
+                          ->  Index Only Scan using idx_track_artists_artist_track on track_artists ta  (cost=0.43..4.30 rows=38 width=8) (actual time=0.002..0.003 rows=41 loops=3249)
+                                Index Cond: (artist_id = ar.artist_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=7491 read=2753
+Planning:
+  Buffers: shared hit=2856 read=224
+Planning Time: 4.934 ms
+Execution Time: 811.451 ms
+=== R19 run 3 ===
+Sort  (cost=167720.42..167728.32 rows=3162 width=39) (actual time=836.513..836.567 rows=3249 loops=1)
+  Sort Key: (count(s.stream_id)) DESC
+  Sort Method: quicksort  Memory: 281kB
+  Buffers: shared hit=7494 read=54405, temp read=12593 written=12593
+  ->  HashAggregate  (cost=167504.98..167536.60 rows=3162 width=39) (actual time=836.097..836.245 rows=3249 loops=1)
+        Group Key: ar.artist_id
+        Batches: 1  Memory Usage: 625kB
+        Buffers: shared hit=7491 read=54405, temp read=12593 written=12593
+        ->  Hash Right Join  (cost=17024.22..165074.66 rows=324043 width=35) (actual time=26.755..799.676 rows=496509 loops=1)
+              Hash Cond: (s.track_id = ta.track_id)
+              Buffers: shared hit=7491 read=54405, temp read=12593 written=12593
+              ->  Append  (cost=0.00..126060.01 rows=5000001 width=16) (actual time=0.011..370.051 rows=5000000 loops=1)
+                    Buffers: shared read=51060
+                    ->  Seq Scan on streams_p2025_01 s_1  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.010..13.004 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_02 s_2  (cost=0.00..5182.11 rows=256411 width=16) (actual time=0.008..11.638 rows=256411 loops=1)
+                          Buffers: shared read=2618
+                    ->  Seq Scan on streams_p2025_03 s_3  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.014..13.062 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_04 s_4  (cost=0.00..5552.26 rows=274726 width=16) (actual time=0.011..12.263 rows=274726 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2025_05 s_5  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.011..12.483 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_06 s_6  (cost=0.00..5553.26 rows=274726 width=16) (actual time=0.010..11.705 rows=274726 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p2025_07 s_7  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.011..12.317 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_08 s_8  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.009..12.392 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_09 s_9  (cost=0.00..5552.25 rows=274725 width=16) (actual time=0.008..11.895 rows=274725 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2025_10 s_10  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.008..12.521 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2025_11 s_11  (cost=0.00..5553.26 rows=274726 width=16) (actual time=0.015..12.107 rows=274726 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p2025_12 s_12  (cost=0.00..5737.82 rows=283882 width=16) (actual time=0.009..12.524 rows=283882 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_01 s_13  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.011..12.300 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_02 s_14  (cost=0.00..5183.10 rows=256410 width=16) (actual time=0.010..10.850 rows=256410 loops=1)
+                          Buffers: shared read=2619
+                    ->  Seq Scan on streams_p2026_03 s_15  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.013..11.944 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_04 s_16  (cost=0.00..5552.25 rows=274725 width=16) (actual time=0.010..11.639 rows=274725 loops=1)
+                          Buffers: shared read=2805
+                    ->  Seq Scan on streams_p2026_05 s_17  (cost=0.00..5737.83 rows=283883 width=16) (actual time=0.013..12.095 rows=283883 loops=1)
+                          Buffers: shared read=2899
+                    ->  Seq Scan on streams_p2026_06 s_18  (cost=0.00..5553.25 rows=274725 width=16) (actual time=0.010..11.695 rows=274725 loops=1)
+                          Buffers: shared read=2806
+                    ->  Seq Scan on streams_p_default s_19  (cost=0.00..0.00 rows=1 width=16) (actual time=0.006..0.006 rows=0 loops=1)
+              ->  Hash  (cost=16000.04..16000.04 rows=81934 width=27) (actual time=26.635..26.636 rows=132871 loops=1)
+                    Buckets: 131072 (originally 131072)  Batches: 2 (originally 1)  Memory Usage: 7169kB
+                    Buffers: shared hit=7491 read=3345, temp written=384
+                    ->  Nested Loop Left Join  (cost=0.43..16000.04 rows=81934 width=27) (actual time=0.011..17.269 rows=132871 loops=1)
+                          Buffers: shared hit=7491 read=3345
+                          ->  Seq Scan on artists ar  (cost=0.00..1192.00 rows=3162 width=23) (actual time=0.006..2.143 rows=3249 loops=1)
+                                Filter: is_verified
+                                Rows Removed by Filter: 56751
+                                Buffers: shared read=592
+                          ->  Index Only Scan using idx_track_artists_artist_track on track_artists ta  (cost=0.43..4.30 rows=38 width=8) (actual time=0.002..0.003 rows=41 loops=3249)
+                                Index Cond: (artist_id = ar.artist_id)
+                                Heap Fetches: 0
+                                Buffers: shared hit=7491 read=2753
+Planning:
+  Buffers: shared hit=2856 read=224
+Planning Time: 4.056 ms
+Execution Time: 836.689 ms
