@@ -1,0 +1,51 @@
+CP4 STORAGE EVIDENCE
+====================
+
+--- Seed Database Size (spotify_cp4_seed17) ---
+ seed_db_size | seed_db_bytes 
+--------------+---------------
+ 129 MB       |     135730867
+(1 row)
+
+--- Seed streams Table Size (spotify_cp4_seed17) ---
+ total_size | table_size | indexes_size | total_bytes | table_bytes | indexes_bytes 
+------------+------------+--------------+-------------+-------------+---------------
+ 63 MB      | 20 MB      | 43 MB        |    66379776 |    21102592 |      45236224
+(1 row)
+
+--- Large Database Size (spotify_cp4_large) ---
+ large_db_size | large_db_bytes 
+---------------+----------------
+ 2478 MB       |     2598565555
+(1 row)
+
+--- Large streams Leaf Partitions Aggregate Size (spotify_cp4_large) ---
+ total_leaf_size | table_leaf_size | indexes_leaf_size | total_leaf_bytes | table_leaf_bytes | indexes_leaf_bytes 
+-----------------+-----------------+-------------------+------------------+------------------+--------------------
+ 1329 MB         | 399 MB          | 929 MB            |       1393278976 |        418291712 |          974241792
+(1 row)
+
+--- Large streams Leaf Partitions Detailed Size Breakdown ---
+      partition_name       | total_size | table_size | indexes_size | total_bytes | table_bytes | indexes_bytes 
+---------------------------+------------+------------+--------------+-------------+-------------+---------------
+ spotify.streams_p2025_01  | 75 MB      | 23 MB      | 53 MB        |    79101952 |    23748608 |      55312384
+ spotify.streams_p2025_02  | 68 MB      | 20 MB      | 48 MB        |    71458816 |    21446656 |      49971200
+ spotify.streams_p2025_03  | 75 MB      | 23 MB      | 53 MB        |    79093760 |    23748608 |      55304192
+ spotify.streams_p2025_04  | 73 MB      | 22 MB      | 51 MB        |    76546048 |    22978560 |      53526528
+ spotify.streams_p2025_05  | 75 MB      | 23 MB      | 53 MB        |    79085568 |    23748608 |      55296000
+ spotify.streams_p2025_06  | 73 MB      | 22 MB      | 51 MB        |    76554240 |    22986752 |      53526528
+ spotify.streams_p2025_07  | 75 MB      | 23 MB      | 53 MB        |    79093760 |    23748608 |      55304192
+ spotify.streams_p2025_08  | 75 MB      | 23 MB      | 53 MB        |    79085568 |    23748608 |      55296000
+ spotify.streams_p2025_09  | 73 MB      | 22 MB      | 51 MB        |    76546048 |    22978560 |      53526528
+ spotify.streams_p2025_10  | 75 MB      | 23 MB      | 53 MB        |    79093760 |    23748608 |      55304192
+ spotify.streams_p2025_11  | 73 MB      | 22 MB      | 51 MB        |    76554240 |    22986752 |      53526528
+ spotify.streams_p2025_12  | 75 MB      | 23 MB      | 53 MB        |    79101952 |    23748608 |      55312384
+ spotify.streams_p2026_01  | 75 MB      | 23 MB      | 53 MB        |    79093760 |    23748608 |      55304192
+ spotify.streams_p2026_02  | 68 MB      | 20 MB      | 48 MB        |    71475200 |    21454848 |      49979392
+ spotify.streams_p2026_03  | 75 MB      | 23 MB      | 53 MB        |    79093760 |    23748608 |      55304192
+ spotify.streams_p2026_04  | 73 MB      | 22 MB      | 51 MB        |    76546048 |    22978560 |      53526528
+ spotify.streams_p2026_05  | 75 MB      | 23 MB      | 53 MB        |    79101952 |    23748608 |      55312384
+ spotify.streams_p2026_06  | 73 MB      | 22 MB      | 51 MB        |    76562432 |    22986752 |      53534720
+ spotify.streams_p_default | 88 kB      | 8192 bytes | 72 kB        |       90112 |        8192 |         73728
+(19 rows)
+

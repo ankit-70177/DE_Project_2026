@@ -1,0 +1,50 @@
+CP4 PARTITIONING EVIDENCE
+=========================
+
+Partition row counts:
+      partition_name      |  rows  
+--------------------------+--------
+ spotify.streams_p2025_01 | 283883
+ spotify.streams_p2025_02 | 256411
+ spotify.streams_p2025_03 | 283882
+ spotify.streams_p2025_04 | 274726
+ spotify.streams_p2025_05 | 283882
+ spotify.streams_p2025_06 | 274726
+ spotify.streams_p2025_07 | 283882
+ spotify.streams_p2025_08 | 283883
+ spotify.streams_p2025_09 | 274725
+ spotify.streams_p2025_10 | 283883
+ spotify.streams_p2025_11 | 274726
+ spotify.streams_p2025_12 | 283882
+ spotify.streams_p2026_01 | 283883
+ spotify.streams_p2026_02 | 256410
+ spotify.streams_p2026_03 | 283883
+ spotify.streams_p2026_04 | 274725
+ spotify.streams_p2026_05 | 283883
+ spotify.streams_p2026_06 | 274725
+(18 rows)
+
+
+June 2026 partition pruning:
+                                                                                  QUERY PLAN                                                                                  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Finalize Aggregate  (cost=7165.94..7165.95 rows=1 width=8) (actual time=13.493..14.051 rows=1 loops=1)
+   Buffers: shared hit=2806
+   ->  Gather  (cost=7165.73..7165.94 rows=2 width=8) (actual time=13.467..14.049 rows=3 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         Buffers: shared hit=2806
+         ->  Partial Aggregate  (cost=6165.73..6165.74 rows=1 width=8) (actual time=11.928..11.929 rows=1 loops=3)
+               Buffers: shared hit=2806
+               ->  Parallel Append  (cost=0.42..5879.51 rows=114487 width=0) (actual time=0.003..10.048 rows=91575 loops=3)
+                     Buffers: shared hit=2806
+                     Subplans Removed: 18
+                     ->  Parallel Seq Scan on streams_p2026_06 streams_1  (cost=0.00..5230.04 rows=161603 width=0) (actual time=0.003..7.068 rows=91575 loops=3)
+                           Filter: ((started_at >= '2026-06-01 00:00:00'::timestamp without time zone) AND (started_at < '2026-07-01 00:00:00'::timestamp without time zone))
+                           Buffers: shared hit=2806
+ Planning:
+   Buffers: shared hit=2902 read=281
+ Planning Time: 4.418 ms
+ Execution Time: 14.073 ms
+(18 rows)
+
