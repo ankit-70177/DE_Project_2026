@@ -108,8 +108,8 @@ A June 2026 range query using `started_at` reported `Subplans Removed: 18` and s
 
 - Selected partition: `streams_p2026_06`
 - Shared buffer hits: 2,806
-- Execution time: 26.448 ms for this single diagnostic EXPLAIN execution
-- Planning time: 29.262 ms
+- Execution time: 14.073 ms for this single diagnostic EXPLAIN execution
+- Planning time: 4.418 ms
 
 This is evidence of partition pruning for a date predicate on the partition key. It is not a replacement for the three-run workload benchmark.
 
@@ -135,7 +135,7 @@ This is evidence of partition pruning for a date predicate on the partition key.
 | `streams_p2026_04` | 274,725 |
 | `streams_p2026_05` | 283,883 |
 | `streams_p2026_06` | 274,725 |
-| `streams_pDefault` | 0 |
+| `streams_p_default` | 0 |
 
 Total: 5,000,000 stream rows across 19 leaf partitions. The default partition currently contains zero rows in the loaded dataset.
 
